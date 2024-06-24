@@ -13,7 +13,7 @@
    }
 
    $path = reroading(3);
-   
+   include($path."databaseinfo/security/secure.php");
    include($path.'databaseinfo/main/database.php');
 
    if(isset($_POST['options'])){

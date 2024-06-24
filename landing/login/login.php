@@ -21,7 +21,7 @@
         if($who=='student'){
             include($path.'databaseinfo/main/database.php');
             $table = 'info';
-            $path = '../../interface/main/Vlab.php';
+            $path = '../../interface/main/VLab.php';
             $idx=1;
         }
 

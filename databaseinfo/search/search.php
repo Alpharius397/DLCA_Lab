@@ -43,7 +43,7 @@
         case 'feed-student':$path = '../../interface/app/feedback/feedpage.php'; $what = 'feed'; break;
     }
 
-    $ans = searchQuery($data);
+    $ans = searchQuery();
     if(isset($_GET['sort'])){
         $sort = $_GET['sort'];
         $sort = "sort=$sort&";
