@@ -283,7 +283,7 @@
         <input type='text' name='path' value='feed-student' id='path' style='display: none;'></form></div>
         <div class='button'>
         <button name='submit' id='submit' value="Begin Search" onclick="document.getElementById('ss').submit()">Search</button>
-        <button id='cancel' name='cancel' onclick="location.href='feedpage.php';" value="Cancel Search">Cancel</button>
+        <button id='cancel' name='cancel' onclick="location.href='feed.php';" value="Cancel Search">Cancel</button>
             
     </div>
     <br>
@@ -429,7 +429,7 @@
                     <?php 
                         if(isset($_SESSION['note'])){ if(!($_SESSION['note'])){
                             echo " alert('Record was not found');";
-                            echo "location.href='feedpage.php';";
+                            echo "location.href='feed.php';";
                         }
 
                         unset($_SESSION['note']);
@@ -443,7 +443,7 @@
 
                         if(!(isset($_GET['found']))){
 
-                            echo "location.href='feedpage.php';";
+                            echo "location.href='feed.php';";
                         }
                         
                     }?>
