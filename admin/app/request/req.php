@@ -20,7 +20,7 @@
     $path = reroading($level);
    include($path."databaseinfo/security/secure_admin.php");
    include($path.'databaseinfo/main/admin.php');
-   
+   include($path.'databaseinfo/helper/help.php');
 
 
    if(!((isset($_GET['found']) || isset($_GET['email'])))){
@@ -305,13 +305,13 @@
                 option.addEventListener('change', () => {
                     document.getElementById('page').submit();
             });
-            var data =<?php arrayJS($_SESSION['data']);?>;
+            var data =<?php  arrayJS($_SESSION['data']); ?>;
 
-                    var userfeed = document.querySelector('.here');
+            var userfeed = document.querySelector('.here');
 
-                    for(let i=0; i<data.length; i++){
-                            app_join(i,data[i].Username,data[i].email,userfeed);
-                    }
+            for(let i=0; i<data.length; i++){
+                    app_join(i,data[i].Username,data[i].email,userfeed);
+            }
 
                     <?php 
                         if(isset($_SESSION['note'])){ if(!($_SESSION['note'])){
