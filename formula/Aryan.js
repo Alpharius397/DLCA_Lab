@@ -1235,12 +1235,17 @@ function gatesdisplayun(sim,A,B,Output,Gate){
 
 }
 
-/** Used to fetch logic gate question which was fetched from database and returns a function to display them. */
-async function createquestionLogic(){
-    const response = await fetch('../../../../databaseinfo/main/answer.json');
-    const json = await response.json();
-    return questionConstruct(json);
-}
+/** Used to fetch logic gate question which was fetched from database and returns a function to display them. 
+
+    Dead Function ahead. May the soul be at peace.
+
+    async function createquestionLogic(){
+        const response = await fetch('../../../../databaseinfo/main/answer.json');
+        const json = await response.json();
+        return questionConstruct(json);
+    }
+
+*/
 
 /** Displays each question (bank) and returns the answer. bank -> dictionary with question,options,answer */
 function questionConstruct(bank){
@@ -1265,6 +1270,8 @@ function questionConstruct(bank){
 
     return answer;
 }
+
+
 
 /** Checks if input string is empty or not and return None if empty else the string itself. string -> string */
 function checkEmpty(string){

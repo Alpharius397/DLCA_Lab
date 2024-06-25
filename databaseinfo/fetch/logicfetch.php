@@ -26,9 +26,7 @@
         $_SESSION['pLimit'] = $row['id'];
     }
     
-    $data = json_encode($questiondata);
-    $file = '../../../databaseinfo/main/answer.json';
-    
-    file_put_contents($file,$data);
+    $_SESSION['data'] = $questiondata;
+
 
 ?>

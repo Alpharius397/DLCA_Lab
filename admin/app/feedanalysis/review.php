@@ -16,9 +16,11 @@
         $_SESSION['page'] = $_POST['options'];
     }
 
-   $path = reroading(3);
-   include($path."databaseinfo/security/secure.php");
+    $level = 3;
+    $path = reroading($level);
+   include($path."databaseinfo/security/secure_admin.php");
    include($path.'databaseinfo/main/database.php');
+   include($path.'databaseinfo/helper/help.php');
    
 
 
@@ -367,10 +369,9 @@
             });
 
             hide(section);
-            var data;
-            fetch('../../../databaseinfo/main/data.json').then((response) => response.json()).then((json) => {
+            var data =<?php arrayJS($_SESSION['data']);?>
 
-                    data = json;
+
                     var userfeed = document.querySelector('.here');
 
                     for(let i=0; i<data.length; i++){
@@ -387,7 +388,6 @@
                     
                         })});
 
-            });
                     <?php 
                         if(isset($_SESSION['note'])){ if(!($_SESSION['note'])){
                             echo " alert('Record was not found');";

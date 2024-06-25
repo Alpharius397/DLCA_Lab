@@ -12,9 +12,11 @@
       return $path;
    }
 
-   $path = reroading(3);
-   include($path."databaseinfo/security/secure.php");
+   $level = 3;
+   $path = reroading($level);
+   include($path."databaseinfo/security/secure_admin.php");
    include($path.'databaseinfo/main/database.php');
+   include($path.'databaseinfo/helper/help.php');
 
    if(isset($_POST['options'])){
         $_SESSION['page'] = $_POST['options'];
@@ -381,10 +383,8 @@
             });
 
             hide(section);
-            var data;
-            fetch('../../../databaseinfo/main/answer.json').then((response) => response.json()).then((json) => {
+            var data =<?php arrayLogic($_SESSION['data']);?>;
 
-                    data = json;
                     var userfeed = document.querySelector('.here');
 
                     for(let i=0; i<data.length; i++){
@@ -399,8 +399,6 @@
                                     reveal(section);
                     
                         })});
-
-                    });
             
                     <?php 
                         if(isset($_SESSION['note'])){ if(!($_SESSION['note'])){

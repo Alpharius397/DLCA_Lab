@@ -15,7 +15,7 @@ function reroading($level)
 $level = 3;
 $path = reroading($level);
 
-include($path."databaseinfo/security/secure.php");
+include($path."databaseinfo/security/secure_admin.php");
 include($path."databaseinfo/main/database.php");
 include($path.'databaseinfo/page_setup/eachcount.php');
 include($path."databaseinfo/fetch/expFetch.php");

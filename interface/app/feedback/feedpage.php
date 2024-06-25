@@ -18,7 +18,7 @@
 
    $path = reroading(3);
    include($path.'databaseinfo/main/database.php');
-   
+   include($path.'databaseinfo/helper/help.php');
 
 
    if(!((isset($_GET['found']) || isset($_GET['sort']) || isset($_GET['how']) || isset($_GET['which'])) && isset($_GET['what']) )){
@@ -324,10 +324,7 @@
             });
 
             
-            var data;
-            fetch('../../../databaseinfo/main/data.json').then((response) => response.json())
-             .then((json) => {
-                    data = json;
+            var data =<?php arrayJS($_SESSION['data']);?>
 
                     var boothrat=<?php echo round($_SESSION['booth']['score']) ?>,restrat=<?php echo round($_SESSION['res']['score']) ?>,
                     nonrestrat=<?php echo round($_SESSION['non']['score']) ?>,logicrat=<?php echo round($_SESSION['logic']['score']) ?>,
@@ -422,8 +419,6 @@
                             }
                     });
 
-
-                    });
 
                     <?php 
                         if(isset($_SESSION['note'])){ if(!($_SESSION['note'])){

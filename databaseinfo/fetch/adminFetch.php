@@ -19,9 +19,7 @@
     } 
 
     $_SESSION['pLimit'] = count($studentdata);
-    $data = json_encode($studentdata);
-    $file = '../../../databaseinfo/main/data.json';
+    $_SESSION['data'] = $studentdata;
 
-    file_put_contents($file,$data);
 
 ?>

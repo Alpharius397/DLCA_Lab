@@ -120,9 +120,8 @@
                 }
             }
             
-            $data = json_encode($fetchdata);
+            $_SESSION['data'] = $fetchdata;
 
-            file_put_contents($file,$data);
             $_SESSION['note'] = true;
         }
     

@@ -16,10 +16,9 @@
    $path = reroading($level);
 
    include($path."databaseinfo/security/secure.php");
-
     include($path.'databaseinfo/main/database.php');
     include($path.'databaseinfo/fetch/logicrandom.php');
-
+    include($path.'databaseinfo/helper/help.php');
     mysqli_close($conn); 
 
 ?> 
@@ -212,10 +211,7 @@
 
     <script src='../../../../formula/Aryan.js'></script>
     <script>
-        var answers=[];
-        createquestionLogic().then((answer) => {
-            answers = answer;
-        });
+        var answers = questionConstruct(<?php arrayLogic($_SESSION['data']);?>);
 
         function submitQuiz1() {
             if (answers!=[]){

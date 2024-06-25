@@ -52,7 +52,12 @@
 
             if ($row_user['user'] === $username && password_verify($password, $row_user['password'])) {
                 
-                $_SESSION['user'] = $row_user['user'];
+                if($who=='admin'){
+                    $_SESSION['admin'] = $row_user['user'];
+                }
+                else{
+                    $_SESSION['user'] = $row_user['user'];
+                }
                 $_SESSION['name'] = $row_user['name'];
                 $_SESSION['email'] = $row_user['email'];
 

@@ -16,8 +16,9 @@
         $_SESSION['page'] = $_POST['options'];
     }
 
-   $path = reroading(3);
-   include($path."databaseinfo/security/secure.php");
+    $level = 3;
+    $path = reroading($level);
+   include($path."databaseinfo/security/secure_admin.php");
    include($path.'databaseinfo/main/admin.php');
    
 
@@ -304,18 +305,14 @@
                 option.addEventListener('change', () => {
                     document.getElementById('page').submit();
             });
+            var data =<?php arrayJS($_SESSION['data']);?>
 
-            var data;
-            fetch('../../../databaseinfo/main/data.json').then((response) => response.json()).then((json) => {
-
-                    data = json;
                     var userfeed = document.querySelector('.here');
 
                     for(let i=0; i<data.length; i++){
                             app_join(i,data[i].Username,data[i].email,userfeed);
                     }
 
-            });
                     <?php 
                         if(isset($_SESSION['note'])){ if(!($_SESSION['note'])){
                             echo " alert('Record was not found');";

@@ -18,9 +18,6 @@
         ));
     } 
     
-    $data = json_encode($studentdata);
-    $file = '../../../databaseinfo/main/data.json';
-
-    file_put_contents($file,$data);
+    $_SESSION['data'] = $studentdata;
 
 ?>

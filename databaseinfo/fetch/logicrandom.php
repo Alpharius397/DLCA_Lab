@@ -56,8 +56,6 @@
             
     } 
 
-    $data = json_encode($questiondata);
-    $file = $path.'databaseinfo/main/answer.json';
+    $_SESSION['data'] = $questiondata;
 
-    file_put_contents($file,$data);
 ?>

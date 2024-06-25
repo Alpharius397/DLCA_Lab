@@ -16,9 +16,11 @@
         $_SESSION['page'] = $_POST['options'];
     }
 
-   $path = reroading(3);
-   include($path."databaseinfo/security/secure.php");
+    $level = 3;
+    $path = reroading($level);
+   include($path."databaseinfo/security/secure_admin.php");
    include($path.'databaseinfo/main/database.php');
+   include($path.'databaseinfo/helper/help.php');
    
 
 
@@ -325,10 +327,7 @@
             });
 
             
-            var data;
-            fetch('../../../databaseinfo/main/data.json').then((response) => response.json())
-             .then((json) => {
-                    data = json;
+            var data =<?php arrayJS($_SESSION['data']);?>;
 
                     var boothrat=<?php echo round($_SESSION['booth']['score']) ?>,restrat=<?php echo round($_SESSION['res']['score']) ?>,
                     nonrestrat=<?php echo round($_SESSION['non']['score']) ?>,logicrat=<?php echo round($_SESSION['logic']['score']) ?>,
@@ -421,9 +420,6 @@
                                     }]
                                 }
                             }
-                    });
-
-
                     });
 
                     <?php 

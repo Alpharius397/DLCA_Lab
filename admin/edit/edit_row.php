@@ -32,6 +32,7 @@
                 case 'Restoring Division Algorithm': $table = 'res';break;
                 case 'Non-Restoring Division Algorithm': $table = 'non';break;
                 case 'Encoder and Decoder': $table = 'encode';break;
+                case 'MUX and DeMUX': $table = 'mux';break;
             }
 
             $sql = "UPDATE $table set rating='$rating',feedback='$feed',time=(select curdate()) where user='$user'";
