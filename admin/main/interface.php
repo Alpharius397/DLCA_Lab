@@ -1352,7 +1352,7 @@ include($path."databaseinfo/security/secure_admin.php");
  <div class="style-13">
  <figure class="style-14">
  <div class="style-15"><a class="style-16" href="/website-maker/preview/lang/site/1145181/">
- <figure class="style-17"><a href="VLab.php"><img color="default" width="150" class="style-18" alt="Navbar logo" sizes="[object Object]" src="../../images/background/kjsieit-logo.svg" /></a></figure>
+ <figure class="style-17"><a href="interface.php"><img color="default" width="150" class="style-18" alt="Navbar logo" sizes="[object Object]" src="../../images/background/kjsieit-logo.svg" /></a></figure>
  <div class="style-19">
  <div class="style-20"></div>
  </div>
