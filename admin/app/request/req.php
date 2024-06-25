@@ -305,7 +305,7 @@
                 option.addEventListener('change', () => {
                     document.getElementById('page').submit();
             });
-            var data =<?php arrayJS($_SESSION['data']);?>
+            var data =<?php arrayJS($_SESSION['data']);?>;
 
                     var userfeed = document.querySelector('.here');
 

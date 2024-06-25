@@ -84,6 +84,7 @@ img.logo{
     30%{
         letter-spacing: 25px;
         margin-bottom: -90px;
+        color:black;
     } 
     
 } 
@@ -194,7 +195,7 @@ img.logo{
   border: 2px solid  rgba(48, 45, 45, 0.6);
 }
 
-.form-box1,.form-box2{
+.form-box{
     width: 350px;
     height: 400px;
     position:relative;
@@ -231,16 +232,16 @@ img.logo{
             font-size: medium;
         }
 
-        #log1,#log2{
+        #log{
             left: -5px;
             color: #E7E4E4;
         }
 
-        #reg1,#reg2{
+        #reg{
             left:8px 
         }
 
-        #btn1,#btn2{
+        #btn{
             top: 0;
             left: 0;
             position: absolute;
@@ -301,11 +302,11 @@ img.logo{
             border: 2px solid #971426;
         }
 
-        #login1,#login2{
+        #login{
             left: 40px;
         }
 
-        #register1,#register2{
+        #register{
             left:450px;
         }
 
@@ -444,17 +445,17 @@ img.logo{
  <button class="button-17" id='stud' role="button" onclick="student();">Student</button>
     <button class="button-17" id='admin' role="button" onclick="admin();">Admin</button>
     <div class='f'>
-        <div class="form-box1">
+        <div class="form-box">
             <div class="button-box">
-                <div id="btn1"></div>
-                <button type="button" id="log1" class="toggle-btn" onclick="login(1)">Log In</button>
-                <button type="button" id="reg1" class="toggle-btn" onclick="register(1)">Register</button>
+                <div id="btn"></div>
+                <button type="button" id="log" class="toggle-btn" onclick="login()">Log In</button>
+                <button type="button" id="reg" class="toggle-btn" onclick="register()">Register</button>
                 
             </div>
-            <form id="login1" action="login/login.php" class="input-group" method="post">
+            <form id="login" action="login/login.php" class="input-group" method="post">
                 <input type="text" id="user" name="user" class="input-field lo" placeholder="Username" required>
                 <input type="password" id="pass" name="pass" class="input-field lo" placeholder="Enter Password" required>
-                <input type='text' id='who' name='who' value='student' readonly style='display:none'>
+                <input type='text' id='who' name='who' value='student' style='display:none'>
                 <button type="submit" class="submit-btn">Log In</button>
                 
                 <?php if(isset($_GET['error1'])) { ?>
@@ -464,14 +465,14 @@ img.logo{
             <p class = 'forgot'><a href='change/entry/entry.php' class='forgot'>Forgot Password?</a></p>
             </form>
 
-            
-            <form action="register/register.php" method="post" id="register1" class="input-group" onsubmit="validateForm(2)">
+    
+            <form action="register/register.php" method="post" id="register" class="input-group" onsubmit="validateForm()">
                 <input type="text" id="name" name="name" class="input-field re" placeholder="Name" required>
-                <input type='text' id='who' name='who' value='student' readonly style='display:none'>
+                <input type='text' id='who' name='who' value='student' style='display:none'>
                 <input type="text" id="username" name="username" class="input-field re" placeholder="Username" required>
                 <input type="email" id="email" name="email" class="input-field re" placeholder="Email Id" required>
-                <input type="text" class="input-field re" id="create1" name="create" placeholder="Create Password" minlength="8" maxlength="20" required>
-                <input type="text" class="input-field re" id="confirm1" name="confirm" placeholder="Confirm Password" minlength="8" maxlength="20" required>
+                <input type="text" class="input-field re" id="create" name="create" placeholder="Create Password" minlength="8" maxlength="20" required>
+                <input type="text" class="input-field re" id="confirm" name="confirm" placeholder="Confirm Password" minlength="8" maxlength="20" required>
                 <span id="password-match-error1" class="error-message"></span>
                 <button type="submit" class="submit-btn" id="reg">Register</button>
                 <?php if(isset($_GET['error2'])) { ?>
@@ -480,39 +481,6 @@ img.logo{
             </form>
     </div>
 
-            <div class="form-box2">
-            <div class="button-box">
-                <div id="btn2"></div>
-                <button type="button" id="log2" class="toggle-btn" onclick="login(2)">Log In</button>
-                <button type="button" id="reg2" class="toggle-btn" onclick="register(2)">Register</button>
-            </div>
-            <form id="login2" action="login/login.php" class="input-group" method="post">
-                <input type="text" id="user" name="user" class="input-field lo" placeholder="Username" required>
-                <input type="password" id="pass" name="pass" class="input-field lo" placeholder="Enter Password" required>
-                <input type='text' id='who' name='who' value='admin' readonly style='display:none'>
-                <button type="submit" class="submit-btn">Log In</button>
-                <?php if(isset($_GET['error3'])) { ?>
-                <p class="error">
-            <?php echo $_GET['error3']; ?><?php } ?><p>
-
-            <p class = 'forgot'><a href='change/entry/entry.php' class='forgot'>Forgot Password?</a></p>
-            </form>
-
-            
-            <form action="register/register.php" method="post" id="register2" class="input-group" onsubmit="validateForm(2)">
-                <input type="text" id="name" name="name" class="input-field re" placeholder="Name" required>
-                <input type="text" id="username" name="username" class="input-field re" placeholder="Username" required>
-                <input type='text' id='who' name='who' value='admin' readonly style='display:none'>
-                <input type="email" id="email" name="email" class="input-field re" placeholder="Email Id" required>
-                <input type="text" class="input-field re" id="create2" name="create" placeholder="Create Password" minlength="8" maxlength="20" required>
-                <input type="text" class="input-field re" id="confirm2" name="confirm" placeholder="Confirm Password" minlength="8" maxlength="20" required>
-                <span id="password-match-error2" class="error-message"></span>
-                <button type="submit" class="submit-btn" id="reg">Register</button>
-                <?php if(isset($_GET['error4'])) { ?>
-        <p class="error">
-            <?php echo $_GET['error4']; ?><?php } ?><p>
-            </form>
-        </div>
 </div>  
  </div>
 </main>
@@ -565,51 +533,38 @@ img.logo{
 </body>
 <script>
 
-    var confirm = document.getElementById('confirm2');
-    var create = document.getElementById('create2');    
-    var confirm = document.getElementById('confirm1');
-    var create = document.getElementById('create1');
-    var error_log1 = document.getElementById('password-match-error1');
-    var error_log2 = document.getElementById('password-match-error2');
+    var confirm = document.getElementById('confirm');
+    var create = document.getElementById('create');    
+    var error_log= document.getElementById('password-match-error');
     var stud = document.getElementById('stud');
     var ad = document.getElementById('admin');
-    var form1 = document.querySelector('.form-box1');
-    var form2 = document.querySelector('.form-box2');
-
-    function register(op){
-        var reg = document.getElementById('reg'+op);
-        var form = document.querySelector('.form-box'+op);
-        var log = document.getElementById('log'+op);
-        var x=document.getElementById("login"+op);
-        var y=document.getElementById("register"+op);
-        var z=document.getElementById("btn"+op);
+    var form = document.querySelector('.form-box');
+    var x=document.getElementById("login");
+    var y=document.getElementById("register");
+    var z=document.getElementById("btn");
+    var log = document.getElementById('log');
+    var reg =document.getElementById('reg');
+    var who =document.querySelectorAll('#who');
+                    console.log(who)
+    function register(){
         x.style.left = "-400px";
-        log.style.color='black';
         y.style.left = "40px";
         z.style.left = "110px";
         form.style.height="510px";
         reg.style.color='white';
+        log.style.color='black';
     }
     
-    function login(op){
-        var reg = document.getElementById('reg'+op);
-        var z=document.getElementById("btn"+op);
-        var form = document.querySelector('.form-box'+op);
-        var log = document.getElementById('log'+op);
-        var x=document.getElementById("login"+op);
-        var y=document.getElementById("register"+op);
+    function login(){
         form.style.height="400px";
-        log.style.color='white';
-        reg.style.color='black';
         x.style.left = "40px";
         y.style.left = "450px";
         z.style.left = "0px";
+        log.style.color='white';
+        reg.style.color='black';
     }
 
     function validateForm(op) {
-        let confirm = document.getElementById('confirm'+op);
-        let create = document.getElementById('create'+op);
-        let error_log = document.getElementById('password-match-error'+op);
 
             if (confirm.value !== create.value) {
                 error_log.textContent = "Passwords do not match!";
@@ -622,38 +577,29 @@ img.logo{
     }
 
     function student(){
-
         stud.className = 'button-16';
         ad.className = 'button-17';
-        form1.style.display = '';
-        form2.style.display = 'none';
+        who.forEach(wh => {wh.setAttribute('value','student')});
+        create.value='stud';
     }
 
     function admin(){
         ad.className = 'button-16';
         stud.className = 'button-17';
-        form2.style.display = '';
-        form1.style.display = 'none';
+        who.forEach(wh => {wh.setAttribute('value','admin')});
+
     }
 
-
-    confirm2.addEventListener("keyup", function () {
-        if (confirm2.value !== create2.value) {
-            error_log2.textContent = "Passwords do not match!";
+    confirm.addEventListener("keyup", function () {
+        if (confirm.value !== create.value) {
+            error_log.textContent = "Passwords do not match!";
         } else {
-            error_log2.textContent = "";
-        }
-    });
-
-    confirm1.addEventListener("keyup", function () {
-        if (confirm1.value !== create1.value) {
-            error_log1.textContent = "Passwords do not match!";
-        } else {
-            error_log1.textContent = "";
+            error_log.textContent = "";
         }
     });
 
     admin();
+    login();
 
     <?php 
 
