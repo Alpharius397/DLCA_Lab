@@ -351,6 +351,7 @@
                     new Chart("rating", {
                     type: "bar",
                     data: {
+                        labels:['Experiments'],
                         datasets: [{
                         backgroundColor: 'red',
                         data: [logicrat],

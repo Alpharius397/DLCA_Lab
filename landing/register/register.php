@@ -19,17 +19,15 @@
         if($who=='student'){
             include($path.'databaseinfo/main/database.php');
             $table = 'info';
-            $idx = 2;
         }
 
         else if($who=='admin'){
             include($path.'databaseinfo/main/admin.php');
             include($path.'databaseinfo/mail/mail_main.php');
             $table = 'newjoin';
-            $idx = 4;
         }
         else{
-            header("Location: ../home.php? error$idx=Some error have occured!&where=reg&type=$who");
+            header("Location: ../home.php? error2=Some error have occured!&where=reg&type=$who");
         }
 
 
@@ -55,22 +53,20 @@
                 writeMail($to,$msg,$sub);
             }
             $conn->commit();
-            header("Location: ../home.php? error$idx=You have registered successfully!&where=reg&type=$who");
+            header("Location: ../home.php? error2=You have registered successfully!&where=reg&type=$who");
             exit();
             
         }
         catch(mysqli_sql_exception){
             $conn->rollback();
-            header("Location: ../home.php? error$idx=That username is already taken!&where=reg&type=$who");
+            header("Location: ../home.php? error2=That username is already taken!&where=reg&type=$who");
             exit();
         }
         catch(Exception $e){
             $conn->rollback();
-            header("Location: ../home.php? error$idx=Some error have occured!&where=reg&type=$who");
+            header("Location: ../home.php? error2=Some error have occured!&where=reg&type=$who");
             exit();
         }
-
-        mysqli_close($conn);
     }
 
 ?>

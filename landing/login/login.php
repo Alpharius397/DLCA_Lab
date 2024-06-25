@@ -22,7 +22,6 @@
             include($path.'databaseinfo/main/database.php');
             $table = 'info';
             $pathe = '../../interface/main/VLab.php';
-            $idx=1;
         }
 
         else if($who=='admin'){
@@ -30,7 +29,7 @@
             include($path.'databaseinfo/mail/mail_main.php');
             $table = 'admin';
             $pathe = '../../admin/main/interface.php';
-            $idx=3;
+
         }
         else{
             header("Location: ../home.php?error1= User not found!&where=log&type=student");
@@ -65,12 +64,12 @@
                 
             } 
             else if ($row_user['user'] === $username || password_verify($password, $row_user['password'])){
-                header("Location: ../home.php?error$idx=Incorrect Username or Password!&where=log&type=$who");
+                header("Location: ../home.php?error1=Incorrect Username or Password!&where=log&type=$who");
             }
         }
 
         else {
-            header("Location: ../home.php?error$idx= User not found!&where=log&type=$who");
+            header("Location: ../home.php?error1= User not found!&where=log&type=$who");
         }
 
     }
