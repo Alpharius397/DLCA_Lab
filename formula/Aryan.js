@@ -2362,6 +2362,77 @@ function createMUXtemp(){
     return key;
 }
 
+/*Generates quiz questions for Encode Decode */
+function createENCODEtemp() {
+    var size = Math.ceil(Math.random() * 2) + 3;
+    var answer = Math.ceil(Math.random() * Math.pow(2, size - 1));
+    var key = [];
+
+    var status = (answer, size, type, i) => {
+        var pool;
+        let active = mapOf1(binary(answer, size));
+    
+        let ans_distri;
+        let extra_distri;
+
+        if (size == 4) {
+            pool = randomChoice(active[0].concat(active[1]), 4);
+        } else {
+            if (active[0].length < active[1].length) {
+                extra_distri = Math.ceil(Math.random() * active[0].length);
+                ans_distri = 4 - extra_distri;
+            } else {
+                ans_distri = Math.ceil(Math.random() * active[1].length);
+                extra_distri = 4 - ans_distri;
+            }
+       
+            var anspool = randomChoice(active[1], ans_distri) || [];
+            var extrapool = randomChoice(active[0], extra_distri) || [];
+
+            pool = randomChoice(anspool.concat(extrapool), 4);
+        }
+
+        key.push(active[1]);
+        createMOption(i, size, pool, question[i], binary(answer, size), type, 1, 'checkbox');
+    };
+
+    var selectOne = (answer, size, type, i) => {
+        var temp = new Set();
+        for (let i = 0; i < Math.pow(2, size); i++) {
+            temp.add(i);
+        }
+
+        temp.delete(answer);
+        temp = Array.from(temp);
+
+        pool = randomChoice(randomChoice(temp, 3).concat(answer), 4);
+        key.push([answer]);
+        createMOption(i, size, pool, question[i], binary(answer, size), type, 0, 'radio');
+    };
+
+    for (let i = 0; i < 4; i++) {
+        var size = Math.ceil(Math.random() * 2) + 3;
+        var answer = Math.ceil(Math.random() * Math.pow(2, size - 1));
+
+        var question = [
+            `Given is a ${Math.pow(2, size)}:${size} Encoder, if Input ${answer} is redirected as the Output. Select all the active status signal(s)`,
+            `Given is a ${Math.pow(2, size)}:${size} Encoder, if given below are the status inputs. Select the input which will be redirected as the Output`,
+            `Given is a ${size}:${Math.pow(2, size)} Decoder, if Input is redirected to Output ${answer}. Select all the active status signal(s)`,
+            `Given is a ${size}:${Math.pow(2, size)} Decoder, if given below are the status inputs. Select the Output to which the Input will be redirected to.`
+        ];
+
+        switch (i) {
+            case 0: status(answer, size, 'Encoder', i); break;
+            case 1: selectOne(answer, size, 'Encoder', i); break;
+            case 2: status(answer, size, 'Decoder', i); break;
+            case 3: selectOne(answer, size, 'Decoder', i); break;
+        }
+    }
+
+    return key;
+}
+
+
 /** Generates the table of status signal. size -> int, randomBinary -> binary string of size size, which -> string */
 function statusTable(size,randomBinary,which){
 
@@ -2459,4 +2530,3 @@ function submitMUX(count){
     }
 
 }
-
