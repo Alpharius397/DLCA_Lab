@@ -245,15 +245,13 @@
     </style>
 </head>
 <body>
-<header>
-    <header class="Nav">
+<header class="Nav">
     <a href="../List.php" class="back-button">Back</a>
         <a href="encodeTheo.php">Theory</a>
         <a href="encode.php" >Simulation</a>
         <a href="encodeEx.php" >Exercise</a>
         <a href="encodeQuiz.php" >Quiz</a>
-    </header>
-    </header>
+</header>
 
     <main><br><br><br>
         <div class="quiz-container">
@@ -261,14 +259,14 @@
                 <img src="../../../../images/background/kjsieit-logo.svg" alt="Logo 1">
                 <img src="../../../../images/background/logo2.png" alt="Logo 2">
             </div>
-            <h2>Booth's Algorithm Quiz</h2>
+            <h2>Encoder & Decoder Quiz</h2>
             <div class="quiz">
             <ol>
                 <div class="tab"></div>
             </ol>
-            <button class="submit-button" onclick="submitQuiz(count)">Check Answer</button>
+            <button class="submit-button" onclick="submitMUX(count)">Check Answer</button>
             <p class="score"></p>
-            <a href="encodefeed.php"><button class="feed-button">Submit Feedback</button></a>
+            <a href="muxfeed.php"><button class="feed-button">Submit Feedback</button></a>
         </div>
     </main>
     <script src='../../../../formula/Aryan.js'></script>
@@ -279,7 +277,8 @@
         "What is next step to be taken in the below given Booth's Algorithm?"];
 
         const tab = document.querySelector('.tab');
-        var count = createquestion(0);
+        const count = createENCODEtemp();
+        console.log(count);
 
     </script>
 
