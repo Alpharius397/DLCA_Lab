@@ -39,7 +39,7 @@
     
         #container {
             width: 100%;
-            height: max-content;
+            height: 100%;
             margin: 10px auto;
             margin-left: 10px;
             margin-right: 10px;
@@ -67,17 +67,6 @@
         display: inline-flex;
         align-items: center;
     }
-    
-    .Q #first, #second{
-        padding-left: 10px;
-        padding-right: 10px;
-        padding-top: 10px;
-       border: 3px solid  #454242a9;
-        border-radius: 4px;
-        height: 30px;
-            z-index: 100;        width: 50px;
-        text-align: center;
-    }
 
     .Q p{
         padding-left: 10px;
@@ -99,7 +88,7 @@
         cursor: pointer;
     }
     
-    #check{
+    #sub{
         font-size: 16px;
         padding: 8px 16px;
         background-color: #00904a;
@@ -121,17 +110,15 @@
         margin: auto;
         margin-top: 10px;
         margin-bottom: 10px;
-        display: none;
-        
+        border: 1px solid black;
     }
         
     #algoTable th, td{
-        border: 1px solid black;
         padding: 8px;
         text-align: center;
     }
         
-    #algoTable th {
+    #algoTable thead th {
         background-color: #333;
         color: #fff;
         align-items: center;
@@ -151,62 +138,6 @@
         width: max-content;
     }
 
-    #algoTable{
-        display:none;
-    }
-
-    #con{
-        padding: 8px;
-        text-align: center;
-        border: 0px solid #ffffff;
-    }
-    
-    input[type = 'text'],input[type = 'number'],input[type = 'number']{
-        width:80%;
-        margin: auto;
-        font-size: 16px;
-        padding: 5px;
-        text-align: center;
-        border: 1px solid #ccc;
-    }
-
-    .mn{
-        display: none;
-        border: 2px solid #ccc;
-        padding: 20px;
-        overflow-y: scroll;
-        overflow-x: scroll;
-        scroll-behavior: smooth;
-        scrollbar-width:thin;
-    }
-
-
-
-
-    .hin{
-        width: fit-content;
-        display: flex;
-        margin: auto;
-    }
-
-    #List{
-        width: fit-content;
-        font-size: 16px;
-        padding: 5px;
-        border-radius: 16px;
-    }
-    
-    #M{
-        font-size: 16px;
-    }
-    
-    #result p{
-        font-size: 16px;
-    }
-    
-    tr:nth-child(even){
-        background-color: #f2f2f2;
-    }
 
     header {
         display: flex;
@@ -249,313 +180,216 @@
             
         }
 
-        #algoTable{
-            display:none;
-        }
 
         .tab1{
-            display: none;
-            height:300px;
+            height:max-content;
             margin-top: 20px;
             margin-bottom: 10px;
             width: 100%;
-            overflow: hidden;
-            overflow-y: scroll;
-            overflow-x: scroll;
             text-align: center;
             justify-items: center;
-            scrollbar-width:thin;
-            border: 1px solid #CCC;
+        }
+
+
+        #ques th,tr{
+            background-color: white;
+            text-align: left;
+            color: #000;
+        }
+
+        #result{
+            display: flex;
+            margin: 5px auto;
+        }
+
+        #result p{
+            display: inline-block;
+            margin: 5px;
+            font-size: 16px;
+        }
+
+        #wrong{
+            color: #971426;
+        }
+
+        #correct{
+            color: #00904a;
+        }
+
+        #question{
+            font-size: 19px;
+            text-align: center;
+            color: #971426;
+        }
+
+        .options input[type='radio'],label {
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .options{
+            display: block;
+            align-items: center;
+            justify-items: center;
+            margin: auto;
+            text-align: center;
+        }
+
+        #remark p{
+            text-align: center;
+            margin: 0px;
+        }
+
+        #quesRow td{
+            border: 1px solid black;
+        }
+
+        #submission{
+            align-items: center;
+            justify-content: center;
+        }
+
+        .submit{
+            width: 20%;
+            border-radius: 10px;
+            color:#ffffff;
+            background-color: #00904a;
+        }
+
+        .submit:hover{
+            border: 1px solid #00904a;
+            color:#00904a;
+            background-color: white;
         }
 
 </style>
 </head>
 <body>
-    <header>
-    <header class="Nav">
-    <a href="../List.php" class="back-button">Back</a>
+<header class="Nav">
+        <a href="../List.php" class="back-button">Back</a>
         <a href="encodeTheo.php">Theory</a>
         <a href="encode.php" >Simulation</a>
         <a href="encodeEx.php" >Exercise</a>
         <a href="encodeQuiz.php" >Quiz</a>
-    </header>
-    </header>
-
+        </header>
     <main>
     <div id="container">
-        <h1>Booth's Algorithm Excerise</h1>
+        <h1>Encoder and Decoder Excerise</h1>
         <h2>Solve the given problem in a step-wise manner.</h2>
     <div class="Q">
-        <p>First Number: <p id = "first"></p></p>
-        <p>Second Number: <p id = "second"></p></p>
-        <button id="reset">Get a Question!</button>
-        <button id="hint" style="display: none;">Show Flowchart</button>
+        <button id="reset">Begin Excerise!</button>
     </div>
     <div class="tab1">
         <table id="algoTable">
             <thead>
-                <tr>
-                    <th style="border-left: 1px solid black">Count</th>
-                    <th>M</th>
-                    <th>AC</th>
-                    <th>Q</th>
-                    <th>Q<sub>-1</sub></th>
-                    <th style="border-right: 1px solid black">Action</th>
+                <tr id="heading">
+                    <th>Sr. No.</th>
+                    <th>Type</th>
+                    <th>Size</th>
+
+                </tr>
+                <tr id="quesRow">
+                    <td id="index">1.</td>
+                    <td id="type">Encoder</td>
+                    <td id="size">4:2</td>
+                    <td id="S0">1</td>
+                    <td id='S1'>1</td>
                 </tr>
             </thead>
-            <tbody id="confirm"></tbody>
-            <tbody id="algoBody"><td><input type="number" id="count" min="1"></td>
-                <td id="M"></td>
-                <td><input type="text" id="AC" required></td>
-                <td><input type="text" id="Q" required></td>
-                <td><input type="number" id="q1" min="0" max="1" required></td>
-                <td>
-                    <select id="List">
-                        <option>A = A - M</option>
-                        <option>A = A + M </option>
-                        <option>Right Arithmetic Shift</option>
-                    </select>
-                </td>
-            <td id="con"><button id="check" disabled="true" style="background: grey;">Check Answer</button></td>
-        </tbody>
+            <tbody id="ques">
+                <tr>
+                <th colspan="5" id="quesT" class="Quiz">
+                
+                    <p id="question">Select the input which will be redirected as the output.</p>    
+                    <br>
+                    <div class="options">
+                    </div>
+                    <p id="remark"></p>
+                    <div class="options"><button class="submit" id="sub">Submit</button>
+                    </div>
+                    
+                </th>
+            </tr>
+            </tbody>
+
         </table>
+        
     </div>
- 
-        <div id = "result"></div>
-        <div class="mn"style="margin:auto"><div class = "hin"><img src="https://miro.medium.com/v2/resize:fit:1366/1*eZmx_ZWi6VzDVr2ixsPdlQ.png" height = "50%"></div>
+    
+        <div id = "result">
+            <p id="total" class="remark">Total Attempts: <b>0</b></p>
+            <p id="correct" class="remark">Correctly Answered: <b>0</b></p>
+            <p id="wrong" class="remark">Incorrectly Answered: <b>0</b></p>
+        </div>
+
+        </div>
     </div>
     
     <div>
     <script src='../../../../formula/Aryan.js'></script>
         <script>
-       
-        
-        var click = 0;
-        var button = document.getElementById('reset');
-        var check = document.getElementById('check');
-        var M = document.getElementById('M');
-        const re = document.getElementById('result');
-        var final_result;
-        var flag = true;
-        var flag1 = true;
-        var result = [];
-        var Cnt = 1;
-        var list;
-        var hint = document.getElementById('hint');
-        var hin = document.querySelector('.mn');
-        const algo = document.getElementById('algoTable');
-        const tab = document.querySelector('.tab1');
-        hint.addEventListener('click', async() =>{
-            if(flag1){
-                buttondisabled(hint);
-                buttondisabled(button);
-                buttondisabled(check);
-                await sleep(1000);
- 
-            
-            hide(tab);
-            reveal(hint);
-            reveal(hin);
-            buttonEnBlu(hint);
-            hint.innerHTML = `Hide Flowchart`;
-            button.style.display = 'none';
-                flag1 = false;
+            const remark = document.getElementById('remark');
+            const quesRow = document.getElementById('quesRow');
+            const question = document.getElementById('question');
+            const total_tries = document.getElementById('total');
+            const correct = document.getElementById('correct');
+            const wrong = document.getElementById('wrong');
+            const submit = document.getElementById("sub");
+            const tableHead = document.getElementById("heading");
+            const answerRow = document.querySelectorAll('.Quiz');
+            const options = document.querySelector(".options");
+            const reset = document.getElementById('reset');
+            const main = document.querySelector(".tab1");
+            const result = document.getElementById('result');
 
-            }
-            else{
-                buttondisabled(hint);
-                await sleep(1000);
-                reveal(algo);
-                reveal(tab);
+            var answer = null;
+            var state = 0;
+            var size = Math.ceil(Math.random()*2)+2;
+            var type = ['Encoder','Decoder'];
+            var context = {'Encoder':{'size':Math.pow(2,size)+':'+size,'ques':'Select the input to get the above output.','what':'Output'},'Decoder':{'size':size+':'+Math.pow(2,size),'ques':'Select the output for the given inputs.','what':'Input'}}
+            var click = {'total':0,'correct':0,'wrong':0};
+            var index=1;
+            var ready; // Setinterval var
 
-            hide(hin);
-            buttonEnBlu(hint);
-            hint.innerHTML = `Show Flowchart`;
-            button.style.display = 'block';
-                flag1 = true;
-                buttonEnBlu(button);
-                buttonEnGre(check);
-                
-            }
+            /** Initial states*/
+            newEncodeTable(size);
+            hide(main);
+            hide(result);
 
+            /** Event Listner*/
+            submit.addEventListener('click',()=>{
+                clearInterval(ready);
+                checkEncode();
+            });
 
-        });
-        button.addEventListener('click', async () => {
-                const ques = document.getElementById('algoBody');
-                const ans = document.getElementById('confirm');
-                const max = document.getElementById('count');
-                var place1 = document.getElementById('first');
-                var place2 = document.getElementById('second');
-                ques.style.display = '';
-                var count = document.getElementById('count');
-                var AC = document.getElementById('AC');
-                var Q = document.getElementById('Q');
-                var q1 = document.getElementById('q1');
-                var act = document.getElementById('List');
-                Cnt = 1;
-                result = [];
-        
-                if (flag) {
-                    list = random();
-                    result = booth(list[0],list[1]);
-                    console.log(result);
-        
-                    place1.innerHTML = `${list[0]}`;
-                    place2.innerHTML = `${list[1]}`;
-                    max.max = `${result[0].count}`;
-                    M.innerHTML = `${result[0].m}`;
-            
-                    const giv = document.createElement('tr');
-                    giv.innerHTML = `<td>${result[0].count}</td>
-                    <td>${result[0].m}</td>
-                    <td>${result[0].ac}</td>
-                    <td>${result[0].q}</td>
-                    <td>${result[0].q1}</td>
-                    <td>${result[0].act}</td>`;
-                    ans.appendChild(giv); 
-                    
-                    buttondisabled(button);
+            reset.addEventListener('click',async () => {
+                buttondisabled(reset);
+                if(state==1){
+
+                    hide(main);
+                    hide(result);
+
                     await sleep(1000);
-                   
-                    button.innerHTML = `Another Question?`;
-                    hint.style.display = 'block';
-                    check.style.display = 'block';
-                    buttonEnGre(check);
-                    buttonEnBlu(hint);
-        
-                    flag = false;
-                    buttonEnBlu(button);
-                    reveal(algo);
-                                reveal(tab);
 
-                } 
-                else {
-                    hide(algo);
-                    hide(re);
-                    hide(tab);
-                    hide(hint);
-                    buttondisabled(button);
-        
-                    ans.innerHTML = '';
-                    place1.innerHTML = ``;
-                    place2.innerHTML = ``;
-                    M.innerHTML = ``;
-                    re.innerHTML = ``;
-                    count.value ='';
-                    AC.value = '';
-                    Q.value = '';
-                    q1.value ='';
-                    buttondisabled(check);
-                    buttondisabled(hint);
-        
-                    act.style.background = 'white'; q1.style.background = 'white';
-                    Q.style.background = 'white'; AC.style.background = 'white'; 
-                    max.style.background = 'white';
-        
-                    await sleep(1000);
-        
-                    buttonEnBlu(button);
-                    button.innerHTML = `Get Question!`;
-                    flag = true;
+                    state = 0;
+                    index = 0;
+                    click = {'total':0,'correct':0,'wrong':0};
+                    reset.innerHTML = `Get Questions`;
                 }
-        });
-        
-        check.addEventListener('click', async () => {
-            var count = document.getElementById('count');
-            var M = document.getElementById('M');
-            var AC = document.getElementById('AC');
-            var Q = document.getElementById('Q');
-            var q1 = document.getElementById('q1');
-            var act = document.getElementById('List');
-            const ans = document.getElementById('confirm');
-            let flag = 0;
-            let dum = result;
-        
-            if(result[Cnt].count == count.value){
-                count.style.background = 'green';
-                flag += 1;
-            }
-            else{
-                count.style.background = 'red';
-            }
-        
-            if(result[Cnt].ac == AC.value){
-                AC.style.background = 'green';
-                flag += 1;
-            }
-            else{
-                AC.style.background = 'red';
-            }
-        
-            if(result[Cnt].q == Q.value){
-                Q.style.background = 'green';
-                flag += 1;
-            }
-            else{
-                Q.style.background = 'red';
-            }
-        
-            if(result[Cnt].q1 == q1.value && !(isNaN(parseInt(q1.value)))){
-                q1.style.background = 'green';
-                flag += 1;
-            }
-            else{
-                q1.style.background = 'red';
-            }
-        
-            if(result[Cnt].act == act.value || result[Cnt].act == "Direct Right Arithmetic Shift"){
-                act.style.background = 'green';
-                flag += 1;
-            }
-            else{
-                act.style.background = 'red';
-            }
+                else{
+                    
+                    reveal(main);
+                    reveal(result);
 
-            await sleep(1000);
+                    await sleep(1000);
 
-            
-            act.style.background = 'white'; q1.style.background = 'white';
-                 Q.style.background = 'white'; AC.style.background = 'white'; 
-                 count.style.background = 'white';
+                    state = 1;
+                    reset.innerHTML = `Reset Attempt`;
+                }
+                buttonEnBlu(reset);
+                updateResult(click);
+            });
 
-
-        
-            if(flag==5){
-                const giv = document.createElement('tr');
-                giv.innerHTML = `<td>${result[Cnt].count}</td>
-                <td>${result[Cnt].m}</td>
-                <td>${result[Cnt].ac}</td>
-                <td>${result[Cnt].q}</td>
-                <td>${result[Cnt].q1}</td>
-                <td>${result[Cnt].act}</td>`;
-                ans.appendChild(giv); 
-                Cnt += 1;
-
-                await sleep(1000);
-
-                count.value ='';
-                    AC.value = '';
-                    Q.value = '';
-                    q1.value ='';
-        
-                act.style.background = 'white'; q1.style.background = 'white';
-                 Q.style.background = 'white'; AC.style.background = 'white'; 
-                 count.style.background = 'white';
-            }
-        
-            console.log(dum.length);
-        
-            if(Cnt>=result.length-1){
-                ques = document.getElementById('algoBody');
-                ques.style.display = 'none';
-        
-                const re = document.getElementById('result');
-        
-                re.innerHTML = `<p> M = (${list[0]})<sub>10</sub> = (${result[0].m})<sub>2</sub><br>
-                Q = (${list[1]})<sub>10</sub> = (${result[0].q})<sub>2</sub><br>
-                Result = (${list[0]*list[1]})<sub>10</sub> = (${result[Cnt].r})<sub>2</sub>`;
-            }
-        });
         </script>
     </div>
     </main>

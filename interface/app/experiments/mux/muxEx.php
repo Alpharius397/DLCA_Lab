@@ -262,16 +262,6 @@
             background-color: white;
         }
 
-        .disabled{
-            background: grey;
-            color:#333;
-            margin: auto;
-            width: 20%;
-            border-radius: 10px;
-        }
-
-
-
 </style>
 </head>
 <body>

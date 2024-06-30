@@ -2194,7 +2194,7 @@ function newQuestions(type){
 function checkMUX(){
     var options = document.querySelectorAll('.this_one');
     var flag = 0;
-    submit.className = 'disabled';
+    buttondisabled(submit);
     options.forEach(opt => {
         if(opt.checked && parseInt(opt.value)==answer){
             index+=1;
@@ -2212,6 +2212,7 @@ function checkMUX(){
                     size = Math.ceil(Math.random()*2)+2;
                     newQuesTable(size);
                     submit.className = 'submit';
+                    buttonEnGre(submit);
                 }
             },1000);
 
@@ -2223,6 +2224,7 @@ function checkMUX(){
             click['wrong'] += 1;
             flag = 1;
             submit.className = 'submit';
+            buttonEnGre(submit);
         }
     });
 
@@ -2232,6 +2234,7 @@ function checkMUX(){
     }
     else{
         submit.className = 'submit';
+        buttonEnGre(submit);
         window.alert('Please select one option');
     }
 
@@ -2529,4 +2532,114 @@ function submitMUX(count){
         document.querySelector('.feed-button').style.display = 'none';
     }
 
+}
+
+function newEncodeTable(size){
+    let which = Math.random()+0.1>0.5? 1:0;
+
+    tableHead.innerHTML = `<th style="border-left: 1px solid black">Sr. No.</th><th>Type</th><th>Size</th>`;
+    quesRow.innerHTML=`<td id="index">${index}.</td><td id="type">${type[which]}</td><td id="size">${context[type[which]].size}</td>`
+
+    answer = Math.ceil(Math.random()*Math.pow(2,size-1));
+    let randomBinary = binary(answer,size);
+
+    for(let i=size-1;i>=0;i--){
+        var newS = document.createElement('td');
+        newS.innerHTML = `${randomBinary[size-1-i]}`;
+        quesRow.appendChild(newS);
+        newS = document.createElement('th');
+        newS.innerHTML = `${context[type[which]].what} ${i}`;
+        tableHead.appendChild(newS);
+    }
+
+    answerRow.forEach(ans => {ans.colSpan=""+size+3});
+    newEncode(type[which]);
+}
+
+function newEncode(type){
+    question.innerHTML = `${context[type]['ques']}`;
+    let available = new Set();
+    let nums = 4;
+
+    while(available.size<4){
+        var opt = Math.ceil(Math.random()*Math.pow(2,size));
+
+        while(opt==answer){
+            opt = Math.ceil(Math.random()*Math.pow(2,size));
+        }
+
+        available.add(opt);
+    }
+    available = Array.from(available);
+    available[Math.floor(Math.random()*nums)] = answer;
+    options.innerHTML = ``;
+
+
+    for(let i=0;i<nums;i++){
+        var radio = document.createElement('input');
+        var label = document.createElement('label');
+        radio.type='radio';
+        radio.value = available[i];
+        radio.name='this_is_correct';
+        label.htmlFor = 'this_is_correct';
+        radio.className = 'this_one';
+
+        switch(type){
+            case 'Encoder': label.innerHTML = `Input ${available[i]}`; break;
+            case 'Decoder': label.innerHTML = `Output ${available[i]}`; break;
+
+        }
+        
+        options.appendChild(radio);
+        options.appendChild(label);
+
+    }
+}
+
+function checkEncode(){
+    var options = document.querySelectorAll('.this_one');
+    var flag = 0;
+    buttondisabled(submit);
+    options.forEach(opt => {
+        if(opt.checked && parseInt(opt.value)==answer){
+            index+=1;
+            click['correct'] += 1;
+            let uwu = 3;
+            remark.innerHTML = `<p style='color:green'>Correct Answer! Loading next in ${uwu}</p>`;
+            ready = setInterval(()=>{
+                
+                uwu-=1;
+                remark.innerHTML = `<p style='color:green'>Correct Answer! Loading next in ${uwu}</p>`;
+                
+                if(uwu==0){
+                    clearInterval(ready);
+                    remark.innerHTML = ``;
+                    size = Math.ceil(Math.random()*2)+2;
+                    newEncodeTable(size);
+                    submit.className = 'submit';
+                    buttonEnGre(submit);
+                }
+            },1000);
+
+            flag = 1;
+            
+        }
+        else if(opt.checked && parseInt(opt.value)!=answer){
+            remark.innerHTML = `<p style='color:red'>Wrong Answer! Try Again</p>`;
+            click['wrong'] += 1;
+            flag = 1;
+            submit.className = 'submit';
+            buttonEnGre(submit);
+        }
+    });
+
+    if(flag){
+        click['total'] += 1;
+        updateResult(click);
+    }
+    else{
+        submit.className = 'submit';
+        buttonEnGre(submit);
+        window.alert('Please select one option');
+    }
 }
