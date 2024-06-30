@@ -493,7 +493,7 @@ include($path."databaseinfo/fetch/expFetch.php");
                 var choice = 0;
                 switchOffArrow(left);
                 chartPieMake();
-                chartVerticalMake() ;
+                chartVerticalMake(expFeed(choice));
 
                 right.addEventListener('click', () => {
                     choice = min(limit, choice + 1);
@@ -506,7 +506,7 @@ include($path."databaseinfo/fetch/expFetch.php");
                     }
                     
                     chartPieMake();
-                    chartVerticalMake();
+                    chartVerticalMake(expFeed(choice));
 
                 });
 
@@ -521,7 +521,7 @@ include($path."databaseinfo/fetch/expFetch.php");
                     }
 
                     chartPieMake();
-                    chartVerticalMake();
+                    chartVerticalMake(expFeed(choice));
                 });
 
 

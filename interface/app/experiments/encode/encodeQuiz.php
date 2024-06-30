@@ -266,7 +266,7 @@
             </ol>
             <button class="submit-button" onclick="submitMUX(count)">Check Answer</button>
             <p class="score"></p>
-            <a href="muxfeed.php"><button class="feed-button">Submit Feedback</button></a>
+            <a href="encodefeed.php"><button class="feed-button">Submit Feedback</button></a>
         </div>
     </main>
     <script src='../../../../formula/Aryan.js'></script>

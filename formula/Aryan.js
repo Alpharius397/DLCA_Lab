@@ -1756,8 +1756,7 @@ function switchOffArrow(arrow){
 }
  
 /** Hanfles the rating bar chart */
-function chartVerticalMake() {
-    var rating = expFeed(choice);
+function chartVerticalMake(rating) {
     var total = Math.max(1,(rating[3] + rating[6] + rating[9] + rating[12]));
 
     for(let i=0;i<4;i++){
