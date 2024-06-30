@@ -2309,6 +2309,7 @@ function createMUXtemp(){
 
         if(size==4){
             pool = randomChoice(active[0].concat(active[1]),4);
+            key.push(active[1]);
         }
         else{
             if(active[0].length<active[1].length){
@@ -2324,9 +2325,10 @@ function createMUXtemp(){
             var extrapool = randomChoice(active[0],extra_distri) || [];
 
             pool = randomChoice(anspool.concat(extrapool),4);
+            key.push(anspool);
         }
 
-        key.push(active[1]);
+        
         createMOption(i,size,pool,question[i],binary(answer,size),type,1,'checkbox');
     };
 
@@ -2380,6 +2382,7 @@ function createENCODEtemp() {
 
         if (size == 4) {
             pool = randomChoice(active[0].concat(active[1]), 4);
+            key.push(active[1]);
         } else {
             if (active[0].length < active[1].length) {
                 extra_distri = Math.ceil(Math.random() * active[0].length);
@@ -2393,10 +2396,11 @@ function createENCODEtemp() {
             var extrapool = randomChoice(active[0], extra_distri) || [];
 
             pool = randomChoice(anspool.concat(extrapool), 4);
+            key.push(anspool);
         }
 
-        key.push(active[1]);
-        createMOption(i, size, pool, question[i], binary(answer, size), type, 1, 'checkbox');
+        
+        createEOption(i, size, pool, question[i], binary(answer, size), type, 1, 'checkbox');
     };
 
     var selectOne = (answer, size, type, i) => {
@@ -2410,7 +2414,7 @@ function createENCODEtemp() {
 
         pool = randomChoice(randomChoice(temp, 3).concat(answer), 4);
         key.push([answer]);
-        createMOption(i, size, pool, question[i], binary(answer, size), type, 0, 'radio');
+        createEOption(i, size, pool, question[i], binary(answer, size), type, 0, 'radio');
     };
 
     for (let i = 0; i < 4; i++) {
@@ -2418,10 +2422,10 @@ function createENCODEtemp() {
         var answer = Math.ceil(Math.random() * Math.pow(2, size - 1));
 
         var question = [
-            `Given is a ${Math.pow(2, size)}:${size} Encoder, if Input ${answer} is redirected as the Output. Select all the active status signal(s)`,
-            `Given is a ${Math.pow(2, size)}:${size} Encoder, if given below are the status inputs. Select the input which will be redirected as the Output`,
-            `Given is a ${size}:${Math.pow(2, size)} Decoder, if Input is redirected to Output ${answer}. Select all the active status signal(s)`,
-            `Given is a ${size}:${Math.pow(2, size)} Decoder, if given below are the status inputs. Select the Output to which the Input will be redirected to.`
+            `Given is a ${Math.pow(2, size)}:${size} Encoder, if Input ${answer} is the current active input. Select all the active output(s)`,
+            `Given is a ${Math.pow(2, size)}:${size} Encoder, if given below are the active outputs. Select the active input`,
+            `Given is a ${size}:${Math.pow(2, size)} Decoder, if Output ${answer} is the current active output. Select all the active input(s)`,
+            `Given is a ${size}:${Math.pow(2, size)} Decoder, iif given below are the active inputs. Select the active output`
         ];
 
         switch (i) {
@@ -2439,14 +2443,22 @@ function createENCODEtemp() {
 /** Generates the table of status signal. size -> int, randomBinary -> binary string of size size, which -> string */
 function statusTable(size,randomBinary,which){
 
-    var type = {'MUX':Math.pow(2,size)+':1','DeMUX':'1:'+Math.pow(2,size)};
-    var quesRow = `<td id="type">${which}</td><td id="size">${type[which]}</td>`;
+    var type = {'MUX':{'size':Math.pow(2,size)+':1','what':'S'},'DeMUX':{'size':'1:'+Math.pow(2,size),'what':'S'},'Encoder':{'size': size+':'+Math.pow(2,size),'what':'Output'},'Decoder':{'size': Math.pow(2,size)+':'+size,'what':'Input'}};
+    var quesRow = `<td id="type">${which}</td><td id="size">${type[which]['size']}</td>`;
     var tableHead = `<th>Type</th><th>Size</th>`;
-    
+    var whatHandler = (type,i) => {
+        switch(type){
+            case 'MUX': 
+            case 'DeMUX': return `<sub>${i}</sub>`; break;
+            case 'Encoder': 
+            case 'Decoder': return ` ${i}`;break;
+
+        }
+    }
 
     for(let i=size-1;i>=0;i--){
         quesRow += `<td>${randomBinary[size-1-i]}</td>`;
-        tableHead += `<th>S<sub>${i}</sub></th>`;
+        tableHead += `<th>${type[which].what}${whatHandler(which,i)}</th>`;
 
     }
 
@@ -2642,4 +2654,31 @@ function checkEncode(){
         buttonEnGre(submit);
         window.alert('Please select one option');
     }
+}
+
+function createEOption(i,size,option,question,randomBinary,which,table,input){
+
+    var status = (table,value,which) => {if(table==1 && which=='Encoder'){ return `Output ${value}`;}if(table==1 && which=='Decoder'){ return `Input ${value}`;} else if(which=='Encoder'){ return `Input ${value}`;} else {return `Output ${value}`;}};
+
+    var draw = (table) => {if(table==0){return statusTable(size,randomBinary,which)} else{ return ``;}}
+
+    var opt = `<input type=${input} name="q${i}" value="${option[0]}"> ${status(table,option[0],which)} <br>
+           <input type=${input} name="q${i}" value="${option[1]}"> ${status(table,option[1],which)} <br>
+           <input type=${input} name="q${i}" value="${option[2]}"> ${status(table,option[2],which)} <br>
+           <input type=${input} name="q${i}" value="${option[3]}"> ${status(table,option[3],which)} <br>
+           <p class="feedback"></p>`;
+
+    const li = document.createElement('li');
+    tab.appendChild
+    li.innerHTML = `<p>${question}</p>
+                    <br>
+                    ${draw(table)}
+                    <div class="option"> ${opt} </div>`;
+
+
+    tab.appendChild(li);
+}
+
+function drawEn(table){
+
 }
