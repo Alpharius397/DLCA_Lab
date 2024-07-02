@@ -65,25 +65,20 @@
     switch($path){
         case 'feed': $sql = array("SELECT count(comb.user) as c from (SELECT * FROM logic UNION ALL SELECT * FROM booth UNION ALL SELECT * FROM non UNION ALL SELECT * FROM res UNION ALL SELECT * FROM encode UNION ALL SELECT * FROM mux) as comb where (comb.rating>0 $query);",
                     "SELECT * from (SELECT * FROM logic UNION ALL SELECT * FROM booth UNION ALL SELECT * FROM non UNION ALL SELECT * FROM res UNION ALL SELECT * FROM encode UNION ALL SELECT * FROM mux) as comb where (comb.rating>0 $query) order by comb.time $sort limit $lim offset $off;");
-                    $file = '../../../databaseinfo/main/data.json';
                     $route = 'feedanalysis/review.php'; break;
 
         case 'logic': $sql = array("SELECT count(id) as c from questions as comb where $query;","SELECT * from questions as comb where $query order by id asc limit $lim offset $off;"); 
-                    $file = '../../../databaseinfo/main/answer.json';
                     $route = 'logicquestion/logicq.php';break;
 
         case 'req': $sql = array("SELECT count(user) as c from newjoin as comb where $query","SELECT user,email from newjoin as comb where $query");
-                    $file = '../../../databaseinfo/main/data.json';
                     $route = 'request/req.php';break;
 
         case 'feed-admin': $sql = array("SELECT count(comb.user) as c from (SELECT * FROM logic UNION ALL SELECT * FROM booth UNION ALL SELECT * FROM non UNION ALL SELECT * FROM res UNION ALL SELECT * FROM encode UNION ALL SELECT * FROM mux) as comb where (comb.rating>0 $query);",
                     "SELECT * from (SELECT * FROM logic UNION ALL SELECT * FROM booth UNION ALL SELECT * FROM non UNION ALL SELECT * FROM res UNION ALL SELECT * FROM encode UNION ALL SELECT * FROM mux UNION ALL SELECT * FROM mux) as comb where (comb.rating>0 $query) order by comb.time $sort limit $lim offset $off;");
-                    $file = '../../../databaseinfo/main/data.json';
                     $route = 'feedpage/review.php'; break;
 
         case 'feed-student': $sql = array("SELECT count(comb.user) as c from (SELECT * FROM logic UNION ALL SELECT * FROM booth UNION ALL SELECT * FROM non UNION ALL SELECT * FROM res UNION ALL SELECT * FROM encode UNION ALL SELECT * FROM mux) as comb where (comb.rating>0 $query);",
                     "SELECT * from (SELECT * FROM logic UNION ALL SELECT * FROM booth UNION ALL SELECT * FROM non UNION ALL SELECT * FROM res UNION ALL SELECT * FROM encode UNION ALL SELECT * FROM mux) as comb where (comb.rating>0 $query) order by comb.time $sort limit $lim offset $off;");
-                    $file = '../../../databaseinfo/main/data.json';
                     $route = '../../interface/app/feedback/feedpage.php'; break;
     }
 
