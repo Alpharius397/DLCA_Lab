@@ -608,10 +608,10 @@ img.logo{
                 echo "student();";
 
                 if($_GET['where']=='reg'){
-                    echo "register(1);";
+                    echo "register();";
                 }
                 else{
-                    echo "login(1);";
+                    echo "login();";
                 }
             }
 
@@ -620,10 +620,10 @@ img.logo{
                 echo "admin();";
                 
                 if($_GET['where']=='reg'){
-                    echo "register(2);";
+                    echo "register();";
                 }
                 else{
-                    echo "login(2);";
+                    echo "login();";
                 }
             }
 
