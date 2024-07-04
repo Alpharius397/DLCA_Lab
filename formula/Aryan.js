@@ -2366,7 +2366,7 @@ function createMUXtemp(){
     return key;
 }
 
-/*Generates quiz questions for Encode Decode */
+/**Generates question for quiz. (If your name starts with either P or A, write documentation of the local functions: status,selectOne. Reward: I will binge slam dunk and hajime no ippo {Promise} ) */
 function createENCODEtemp() {
     var size = Math.ceil(Math.random() * 2) + 3;
     var answer = Math.ceil(Math.random() * Math.pow(2, size - 1));
@@ -2676,8 +2676,4 @@ function createEOption(i,size,option,question,randomBinary,which,table,input){
 
 
     tab.appendChild(li);
-}
-
-function drawEn(table){
-
 }
