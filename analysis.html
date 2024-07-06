@@ -1,0 +1,374 @@
+<?php
+session_start();
+
+function reroading($level)
+{
+    $path = '';
+
+    for ($i = 0; $i < $level; $i++) {
+        $path .= '../';
+    }
+
+    return $path;
+}
+
+$level = 3;
+$path = reroading($level);
+
+include($path."databaseinfo/security/secure_admin.php");
+include($path."databaseinfo/main/database.php");
+include($path.'databaseinfo/page_setup/eachcount.php');
+include($path."databaseinfo/fetch/expFetch.php");
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Experiment: Aim, Theory, and Procedure</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-size: 100% 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            background-color: #971426;
+            width: 100%;
+            padding: 20px;
+            color: #ffffff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 30px;
+            z-index: 100;
+        }
+
+        .back-button {
+            text-align: left;
+            font-size: medium;
+            margin-right: 20px; /* Adjusted to give space between buttons */
+        }
+
+        header a {
+            margin: 15px;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 5px;
+            transition: all 0.4s;
+        }
+
+        a:hover {
+            border-radius: 5px;
+            font-size: 120%;
+        }
+
+        main {
+            margin: 0px auto;
+            width: 80%;
+            padding-top: 100px; /* Adjusted to account for fixed header and center content */
+            text-align: center; /* Center align content within main */
+        }
+
+        section {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+        }
+
+        .scrolls {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .white {
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            color: grey;
+            font-size: 20px;
+            background: none;
+            transition: 0.4s ease;
+            border: 0px;
+            margin-top: 10px;
+            border-radius: 50px;
+        }
+
+        .white:hover {
+            color: #fff;
+            background: grey;
+        }
+
+        .black {
+            cursor: default;
+            width: 50px;
+            height: 50px;
+            color: white;
+            font-size: 20px;
+            background: none;
+            transition: 0.4s ease;
+            border: 0px;
+            margin-top: 10px;
+            border-radius: 50px;
+            user-select: none;
+        }
+
+        h1 {
+            margin: 10px;
+            min-width: 500px;
+            max-width: 500px;
+            background-color: #971426;
+            color: #fff;
+            padding: 10px 20px;
+            margin-top: 60px; /* Adjusted to account for fixed header */
+            margin-bottom: 30px; /* Added for spacing */
+            display: inline-block; /* Ensures width constraints are respected */
+        }
+
+        :root {
+            --arc: 0deg;
+            --color: red;
+        }
+
+        .circular-progress {
+            position: relative;
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            background: conic-gradient(var(--color) var(--arc), #ededed 0deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 1s ease-out;
+        }
+
+        .circular-progress::before {
+            content: "";
+            position: absolute;
+            height: 130px;
+            width: 130px;
+            border-radius: 50%;
+            background-color: #fff;
+        }
+
+        .progress-value {
+            position: relative;
+            font-size: 40px;
+            font-weight: 600;
+            color: rgb(94, 94, 94);
+            transition: 1s ease-out;
+        }
+
+        .overall {
+            font-size: 20px;
+            width: 100%;
+            color: #7d2ae8;
+            display: block;
+            margin: auto;
+            text-align: center;
+        }
+
+        .sect {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .charts {
+            flex: 1;
+            margin: 10px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .charts canvas {
+            width: 100%;
+            height: 300px;
+            min-width: 300px;
+            max-height: 350px;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        tr {
+            margin-bottom: 10px;
+        }
+
+        .stars-l {
+            width: 30%;
+            text-align: right;
+            padding-right: 10px;
+            font-weight: bold;
+        }
+
+        .stars-r {
+            width: 30%;
+            text-align: left;
+            padding-left: 10px;
+        }
+
+        .bar {
+            height: 20px;
+            background-color: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .bar-0 {
+            background-color: red;
+        }
+
+        .bar-1 {
+            background-color: orange;
+        }
+
+        .bar-2 {
+            background-color: lawngreen;
+        }
+
+        .bar-3 {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="Nav">
+        <a href="../../main/interface.php" class="back-button">Back</a>
+        <a href="review.php">Feedback Edit</a>
+    </header>
+
+    <main>
+        <h1>Feedback Analysis</h1>
+        <div class="Dhruv">
+            <div class="Aryan">
+                <div class="scrolls">
+                    <button class="fa-solid fa-arrow-left black" id="left"></button>
+                    <h1 id='currPage'>Current Page Title</h1>
+                    <button class="fa-solid fa-arrow-right white" id="right"></button>
+                </div>
+                <div class='charts' id='total-done'>
+                    <canvas id="rating" width="400" height="400"></canvas>
+                </div>
+            </div>
+            <section id="aim">
+                <h2>Detailed Analysis</h2>
+                <div class='sect'>
+                    <div class='charts' id='comp'>
+                        <table id='rating_review'>
+                            <tr>
+                                <td class='stars-l'>12★ - 15★</td>
+                                <td class='bar-3'>
+                                    <div class='bar'></div>
+                                </td>
+                                <td class='stars-r' id='r3'>12</td>
+                            </tr>
+                            <tr>
+                                <td class='stars-l'>9★ - 11★</td>
+                                <td class='bar-2'>
+                                    <div class='bar'></div>
+                                </td>
+                                <td class='stars-r' id='r2'>12</td>
+                            </tr>
+                            <tr>
+                                <td class='stars-l'>6★ - 8★</td>
+                                <td class='bar-1'>
+                                    <div class='bar'></div>
+                                </td>
+                                <td class='stars-r' id='r1'>12</td>
+                            </tr>
+                            <tr>
+                                <td class='stars-l'>3★ - 5★</td>
+                                <td class='bar-0'>
+                                    <div class='bar'></div>
+                                </td>
+                                <td class='stars-r' id='r0'>12</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class='charts' id='avg'>
+                        <canvas id="myChart" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script src="../lib/Chart.js"></script>
+    <script>
+        var ratingCtx = document.getElementById('rating').getContext('2d');
+        var myChart = new Chart(ratingCtx, {
+            type: 'bar',
+            data: {
+                labels: ['3★ - 5★', '6★ - 8★', '9★ - 11★', '12★ - 15★'],
+                datasets: [{
+                    label: 'Ratings Distribution',
+                    data: [12, 12, 12, 12],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Average Ratings'],
+                datasets: [{
+                    label: 'Average Ratings',
+                    data: [8],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
