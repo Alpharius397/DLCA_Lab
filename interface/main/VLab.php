@@ -1381,7 +1381,7 @@
  <div class="style-30"><a class="style-31" href="../app/feedback/feedpage.php">Feedback</a></div>
  </div>
  <div class="style-32">
- <div class="style-33"><a class="style-34" href="">About Us</a></div>
+ <div class="style-33"><a class="style-34" href="../app/about/about.php">About Us</a></div>
  </div>
  <div class="style-35">
  <div class="style-36"><form action='../logout/logout.php' onsubmit="return deleteAlert();"><input type='submit' class="style-37" value="Logout"></form></div>
