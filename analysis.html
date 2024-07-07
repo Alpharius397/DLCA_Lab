@@ -1,374 +1,259 @@
-<?php
-session_start();
-
-function reroading($level)
-{
-    $path = '';
-
-    for ($i = 0; $i < $level; $i++) {
-        $path .= '../';
-    }
-
-    return $path;
-}
-
-$level = 3;
-$path = reroading($level);
-
-include($path."databaseinfo/security/secure_admin.php");
-include($path."databaseinfo/main/database.php");
-include($path.'databaseinfo/page_setup/eachcount.php');
-include($path."databaseinfo/fetch/expFetch.php");
-?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Experiment: Aim, Theory, and Procedure</title>
     <style>
+        /* Reset styles and global settings */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            margin: 0;
-            padding: 0;
             background-size: 100% 100%;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
         }
 
         header {
-            display: flex;
-            align-items: center;
             background-color: #971426;
-            width: 100%;
-            padding: 20px;
             color: #ffffff;
+            padding: 10px 20px;
             position: fixed;
             top: 0;
             left: 0;
-            height: 30px;
+            width: 100%;
             z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .back-button {
-            text-align: left;
-            font-size: medium;
-            margin-right: 20px; /* Adjusted to give space between buttons */
-        }
-
-        header a {
-            margin: 15px;
             color: #ffffff;
             text-decoration: none;
-            padding: 5px;
-            transition: all 0.4s;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
 
-        a:hover {
-            border-radius: 5px;
-            font-size: 120%;
+        .back-button:hover {
+            background-color: #6d0d1a;
         }
 
         main {
-            margin: 0px auto;
             width: 80%;
-            padding-top: 100px; /* Adjusted to account for fixed header and center content */
-            text-align: center; /* Center align content within main */
+            margin-top: 60px;
         }
 
         section {
-            margin-top: 30px;
             margin-bottom: 30px;
         }
 
         h2 {
             border-bottom: 1px solid #333;
             padding-bottom: 5px;
+            margin-bottom: 10px;
         }
 
-        .scrolls {
-            display: inline-flex;
-            align-items: center;
+        form {
+            margin-bottom: 20px;
         }
 
-        .white {
-            cursor: pointer;
-            width: 50px;
-            height: 50px;
-            color: grey;
-            font-size: 20px;
-            background: none;
-            transition: 0.4s ease;
-            border: 0px;
-            margin-top: 10px;
-            border-radius: 50px;
-        }
-
-        .white:hover {
-            color: #fff;
-            background: grey;
-        }
-
-        .black {
-            cursor: default;
-            width: 50px;
-            height: 50px;
-            color: white;
-            font-size: 20px;
-            background: none;
-            transition: 0.4s ease;
-            border: 0px;
-            margin-top: 10px;
-            border-radius: 50px;
-            user-select: none;
-        }
-
-        h1 {
-            margin: 10px;
-            min-width: 500px;
-            max-width: 500px;
-            background-color: #971426;
-            color: #fff;
-            padding: 10px 20px;
-            margin-top: 60px; /* Adjusted to account for fixed header */
-            margin-bottom: 30px; /* Added for spacing */
-            display: inline-block; /* Ensures width constraints are respected */
-        }
-
-        :root {
-            --arc: 0deg;
-            --color: red;
-        }
-
-        .circular-progress {
-            position: relative;
-            height: 150px;
-            width: 150px;
-            border-radius: 50%;
-            background: conic-gradient(var(--color) var(--arc), #ededed 0deg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 1s ease-out;
-        }
-
-        .circular-progress::before {
-            content: "";
-            position: absolute;
-            height: 130px;
-            width: 130px;
-            border-radius: 50%;
-            background-color: #fff;
-        }
-
-        .progress-value {
-            position: relative;
-            font-size: 40px;
-            font-weight: 600;
-            color: rgb(94, 94, 94);
-            transition: 1s ease-out;
-        }
-
-        .overall {
-            font-size: 20px;
-            width: 100%;
-            color: #7d2ae8;
+        label {
             display: block;
-            margin: auto;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type='text'], input[type='number'], textarea, select {
+            width: 40%; /* Adjusted width for smaller boxes */
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type='submit'], input[type='button'], input[type='reset'] {
+            background-color: #971426;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
             text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
 
-        .sect {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .charts {
-            flex: 1;
-            margin: 10px;
-            padding: 10px;
-            background-color: #f1f1f1;
-            border-radius: 10px;
-        }
-
-        .charts canvas {
-            width: 100%;
-            height: 300px;
-            min-width: 300px;
-            max-height: 350px;
+        input[type='submit']:hover, input[type='button']:hover, input[type='reset']:hover {
+            background-color: #6d0d1a;
         }
 
         table {
             width: 100%;
-            margin-top: 20px;
+            border-collapse: collapse;
+            margin-bottom: 20px;
         }
 
-        tr {
-            margin-bottom: 10px;
+        table th, table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
         }
 
-        .stars-l {
-            width: 30%;
-            text-align: right;
-            padding-right: 10px;
-            font-weight: bold;
+        table th {
+            background-color: #971426;
+            color: #ffffff;
         }
 
-        .stars-r {
-            width: 30%;
-            text-align: left;
-            padding-left: 10px;
+        .pages {
+            text-align: center; /* Center align the pagination buttons */
+            margin-top: 10px;
         }
 
-        .bar {
-            height: 20px;
-            background-color: #ddd;
-            border-radius: 10px;
-            overflow: hidden;
+        .page-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center align the buttons horizontally */
         }
 
-        .bar-0 {
-            background-color: red;
+        .page-buttons a {
+            background-color: #971426;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 0 5px; /* Add margin between buttons */
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            cursor: pointer;
         }
 
-        .bar-1 {
-            background-color: orange;
-        }
-
-        .bar-2 {
-            background-color: lawngreen;
-        }
-
-        .bar-3 {
-            background-color: green;
+        .page-buttons a:hover {
+            background-color: #6d0d1a;
         }
     </style>
 </head>
-
 <body>
-    <header class="Nav">
-        <a href="../../main/interface.php" class="back-button">Back</a>
-        <a href="review.php">Feedback Edit</a>
-    </header>
+<header>
+    <a href="../../main/interface.php" class="back-button">Back</a>
+</header>
 
-    <main>
-        <h1>Feedback Analysis</h1>
-        <div class="Dhruv">
-            <div class="Aryan">
-                <div class="scrolls">
-                    <button class="fa-solid fa-arrow-left black" id="left"></button>
-                    <h1 id='currPage'>Current Page Title</h1>
-                    <button class="fa-solid fa-arrow-right white" id="right"></button>
-                </div>
-                <div class='charts' id='total-done'>
-                    <canvas id="rating" width="400" height="400"></canvas>
-                </div>
+<main>
+    <section id="search">
+        <h2>Search</h2>
+        <form method="get" action="../../../databaseinfo/search/search.php">
+            <label for="found">Enter user:</label>
+            <input type="search" id="found" name="found" placeholder="Enter user">
+            <input type="submit" name="submit" value="Search">
+            <input type="button" onclick="location.href='logicq.php';" value="Cancel Search">
+        </form>
+    </section>
+
+    <section id="aim">
+        <h2>Logic Questions</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sr. No.</th>
+                    <th>Question</th>
+                    <th>Option A</th>
+                    <th>Option B</th>
+                    <th>Option C</th>
+                    <th>Option D</th>
+                    <th>Answer</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody class="here">
+                <!-- Table rows populated dynamically -->
+            </tbody>
+        </table>
+
+        <div class="pages">
+            <div class="page-buttons">
+                <a href="#"><<</a>
+                <a href="#">Page 1</a>
+                <a href="#">>></a>
             </div>
-            <section id="aim">
-                <h2>Detailed Analysis</h2>
-                <div class='sect'>
-                    <div class='charts' id='comp'>
-                        <table id='rating_review'>
-                            <tr>
-                                <td class='stars-l'>12★ - 15★</td>
-                                <td class='bar-3'>
-                                    <div class='bar'></div>
-                                </td>
-                                <td class='stars-r' id='r3'>12</td>
-                            </tr>
-                            <tr>
-                                <td class='stars-l'>9★ - 11★</td>
-                                <td class='bar-2'>
-                                    <div class='bar'></div>
-                                </td>
-                                <td class='stars-r' id='r2'>12</td>
-                            </tr>
-                            <tr>
-                                <td class='stars-l'>6★ - 8★</td>
-                                <td class='bar-1'>
-                                    <div class='bar'></div>
-                                </td>
-                                <td class='stars-r' id='r1'>12</td>
-                            </tr>
-                            <tr>
-                                <td class='stars-l'>3★ - 5★</td>
-                                <td class='bar-0'>
-                                    <div class='bar'></div>
-                                </td>
-                                <td class='stars-r' id='r0'>12</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class='charts' id='avg'>
-                        <canvas id="myChart" width="400" height="400"></canvas>
-                    </div>
-                </div>
-            </section>
         </div>
-    </main>
-    <script src="formula/Chart.js"></script>
-    <script>
-        var ratingCtx = document.getElementById('rating').getContext('2d');
-        var myChart = new Chart(ratingCtx, {
-            type: 'bar',
-            data: {
-                labels: ['3★ - 5★', '6★ - 8★', '9★ - 11★', '12★ - 15★'],
-                datasets: [{
-                    label: 'Ratings Distribution',
-                    data: [12, 12, 12, 12],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
+    </section>
 
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Average Ratings'],
-                datasets: [{
-                    label: 'Average Ratings',
-                    data: [8],
-                    backgroundColor: [
-                        'rgba(75, 192, 192, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(75, 192, 192, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script>
+    <section id="editing">
+        <h2>Edit Response</h2>
+        <form id="edit" method="post" action="../../edit/edit_row.php">
+            <input type="number" id="index" name="index" style="display: none;">
+            <label for="ques">Question:</label>
+            <input type="text" id="ques" name="ques" placeholder="Enter the question to be edited" required><br>
+            <label for="opt1">Option A:</label>
+            <input type="text" name="opt1" id="opt1" placeholder="Option A" required><br>
+            <label for="opt2">Option B:</label>
+            <input type="text" name="opt2" id="opt2" placeholder="Option B" required><br>
+            <label for="opt3">Option C:</label>
+            <input type="text" name="opt3" id="opt3" placeholder="Option C" required><br>
+            <label for="opt4">Option D:</label>
+            <input type="text" name="opt4" id="opt4" placeholder="Option D" required><br>
+            <label for="ans">Answer:</label>
+            <select id="ans" name="ans" required>  
+                <option value="a">A</option>
+                <option value="b">B</option>
+                <option value="c">C</option>
+                <option value="d">D</option>
+            </select><br>
+            <input type="text" name="path" value="logicq" style="display: none;" readonly>
+            <input type="submit" name="submit" value="Submit">
+            <input type="button" id="cancel" value="Cancel" onclick="clearForm(edit);hide(editing);">
+        </form>
+    </section>
+
+    <section id="add">
+        <h2>Add Question</h2>
+        <form action="../../add/add_row.php" method="post" id="new">
+            <label for="quest">Enter the question to be added:</label>
+            <input type="text" name="quest" id="quest" placeholder="Question" required><br>
+            <label for="o1">Option A:</label>
+            <input type="text" name="o1" id="o1" placeholder="Option A" required><br>
+            <label for="o2">Option B:</label>
+            <input type="text" name="o2" id="o2" placeholder="Option B" required><br>
+            <label for="o3">Option C:</label>
+            <input type="text" name="o3" id="o3" placeholder="Option C" required><br>
+            <label for="o4">Option D:</label>
+            <input type="text" name="o4" id="o4" placeholder="Option D" required><br>
+            <label for="new_ans">Answer:</label>
+            <select id="new_ans" name="new_ans" required>  
+                <option value="a">A</option>
+                <option value="b">B</option>
+                <option value="c">C</option>
+                <option value="d">D</option>
+            </select><br>
+            <input type="submit" name="submit" value="Submit">
+            <input type="button" id="cancel" value="Cancel" onclick="clearForm(new);hide(add);">
+        </form>
+    </section>
+</main>
+
+<script>
+    // JavaScript functions for interaction (e.g., clearing forms, hiding sections)
+    function clearForm(form) {
+        form.reset();
+    }
+
+    function hide(section) {
+        section.style.display = 'none';
+    }
+</script>
+
 </body>
-
 </html>

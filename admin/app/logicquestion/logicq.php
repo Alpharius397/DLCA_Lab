@@ -40,203 +40,149 @@
     <meta charset="UTF-8">
     <title>Experiment: Aim, Theory, and Procedure</title>
     <style>
-   body {
-    font-family: Arial, sans-serif;
-            line-height: 1.6;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
             background-size: 100% 100%;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
         }
 
-
-    .tab th,td {
-        border: 0px solid #ccc;
-        width: 10px;
-    }
-
-
-
-   
-    header {
-            display: flex;
-            align-items: center;
-            justify-items: center;
-            background-color: #971426; 
-            width: 100%;
-            padding: 20px;
+        header {
+            background-color: #971426;
             color: #ffffff;
+            padding: 10px 20px;
             position: fixed;
             top: 0;
             left: 0;
-            height: 30px;
-            z-index: 100;        } 
-        .back-button{
-            text-align: left;
-            font-size: medium;
-            margin-right: 50px;
-
-
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        header a{
-            margin: 15px;
+
+        .back-button {
             color: #ffffff;
             text-decoration: none;
-            
-            padding: 5px;
-            transition: all 0.4s;
-        }
-        a:hover{
-           
+            padding: 5px 10px;
             border-radius: 5px;
-            font-size: 120%;
-        } 
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #6d0d1a;
+        }
+
         main {
-            margin: 0px auto;
             width: 80%;
-          
-            
+            margin-top: 60px;
         }
 
         section {
-            margin-top: 30px;
+            margin-bottom: 30px;
         }
 
-   
         h2 {
             border-bottom: 1px solid #333;
             padding-bottom: 5px;
-        }
-    
-
-        #flowchart {
-            text-align: left;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        #flowchart h2 {
             margin-bottom: 10px;
         }
 
-        #flowchart img {
-            max-width: 110%;
-            padding-top: 20px;
-            align-self: flex-start;
-            margin-left: 13%;
+        form {
+            margin-bottom: 20px;
         }
-        
-        .Dhruv{
-            margin-top: 100px;
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
         }
-        .Aryan{
+
+        input[type='text'], input[type='search'], input[type='number'], textarea, select {
+            width: 40%; /* Adjusted width for smaller boxes */
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type='submit'], input[type='button'],button, input[type='reset'] {
+            background-color: #971426;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
             text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
 
-        #tab{
-            border: 1px solid #333;
-            padding: 10px;
-            border-radius: 15px;
+        input[type='submit']:hover,input[type='button']:hover, button:hover, input[type='reset']:hover {
+            background-color: #6d0d1a;
         }
-        #tab th,td {
-        border: 0px solid #ccc;
-        width: 10px;
-    }
 
-    .a{
-        display: flex;
-    }
-
-    .b{
-        width: 30%;
-    }
-
-    .c{
-        width: max-content;
-        height: min-content;
-        padding: 10px;
-        border: 1px solid #ccc;
-        margin: 0px auto;
-        align-items: center;
-        margin-left: 10px;
-        margin-right: 10px;
-            text-align: center;
-            align-items: center;
-            justify-items: center;
-
-    }
-
-    #feedTable{
-            width: 95%;
+        table {
+            width: 100%;
             border-collapse: collapse;
-            display: flex-start;
-            margin: auto;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            padding: auto;
+            margin-bottom: 20px;
         }
-        
-        #feedTable th, td{
-            border: 1px solid black;
+
+        table th, table td {
+            border: 1px solid #ccc;
             padding: 8px;
             text-align: center;
         }
-        
-        #feedTable td {
+
+        table td {
             background-color: #971426;
-            color: #fff;
+            color: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .pages {
+            text-align: center; /* Center align the pagination buttons */
+            margin-top: 10px;
+        }
+
+        .page-buttons {
+            display: flex;
             align-items: center;
-            border: 1px solid #ccc;
-            align-self: center;
+            justify-content: center; /* Center align the buttons horizontally */
         }
 
-        #feedTable tbody td,th{
-            width: 13%;
+        .page-buttons a {
+            background-color: #971426;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 0 5px; /* Add margin between buttons */
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            cursor: pointer;
         }
 
-        #feedTable thead td,th{
-            width: 13%;
-        }
-
-        #feedTable tr,td{
-            width: max-content;
-        }
-
-        .pages{
-            display: inline-flex;
-            height: 15%;
-            padding-left: 90%;
-        }
-
-        .actions{
-            display: block;
-            justify-items: center;
-            align-items: center;
-            padding: auto;
-            height: 100%;
-            width: 100%;
-        }
-
-        form{
-            margin: 5px;
-            display: block;
-        }
-
-        label{
-            display: inline-block;
-        }
-
-        input[type='text'], input[type='number']{
-            display: inline-block;
-            margin-left: 15px;    
-            width: 20%;
-        }
-
-        textarea{
-            padding-bottom: 0px;
-            display: block;
+        .page-buttons a:hover {
+            background-color: #6d0d1a;
         }
         
 
@@ -250,16 +196,16 @@
 
     <main>
         <div class="Dhruv">
-            <div class="Aryan">
-            <h1 style='margin: 5px auto;'>Logic Questions</h1>
-            </div> 
-        <section>
-        <form method="get" action='../../../databaseinfo/search/search.php'>
-        <label for='found'>User: </label>
-        <input type='search' id='found' name='found' value="<?php if(isset($_GET['found'])){ echo $_GET['found']; }?>" >
-        <input type='text' name='path' value='logic' id='path' style='display: none;' readonly>
-        <input type='submit' name='submit' id='submit'>
-        <input type='button' id='cancel' name='cancel' onclick="location.href='logicq.php';" value="Cancel Search">
+
+        <section id="search">
+        <h2>Search</h2>
+            <form method="get" action="../../../databaseinfo/search/search.php">
+                <label for="found">Enter question:</label>
+                <input type="search" id="found" name="found" placeholder="Enter question">
+                <input type="submit" name="submit" value="Search">
+                <input type="button" onclick="location.href='logicq.php';" value="Cancel Search">
+            </form>
+        </section>
             </form>
 
         <?php if(isset($_GET['search'])){$_SESSION['page']=0 ;} ?>
@@ -294,15 +240,11 @@
         </select>
     </form>
         </div>
-
-
-
-
         
         </section>
         
         <section id='editing'>
-            <p>Edit Response</p>
+            <h2>Edit Response</h2>
                 <form id='edit' method='post' action='../../edit/edit_row.php'>
                     <input type='number' id='index' name='index' style="display: none;">
                     <label for='ques'> Question: </label>
@@ -330,7 +272,7 @@
                 
         </section>
         <section id='add'>
-            <p>Add Question</p>
+            <h2>Add Question</h2>
 
             <form action='../../add/add_row.php' method='post' id='new'>
                 <label for='quest'>Question:</label>
@@ -355,7 +297,7 @@
                 
             </form>
 
-
+            <a href="#search" id="scroll" style="display:none"></a>
         </section>
 </div>
 <div>
@@ -421,6 +363,12 @@
                         }
                         
                     }?>
+
+<?php 
+                if( isset($_POST['options']) || ((isset($_GET['found'])|| isset($_GET['sort']) || isset($_GET['how']) || isset($_GET['which'])) && isset($_GET['what']))){
+                    echo "document.getElementById('scroll').click();";
+                }
+            ?>
 
     </script>
 
