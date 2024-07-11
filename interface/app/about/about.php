@@ -48,16 +48,10 @@ body::before {
     transform: translateY(-50%);
 }
 
-.back-button a {
-    color: white;
+.back-button a{
     text-decoration: none;
-    display: block;
-    padding: 10px;
-    transition: background-color 0.3s;
-}
-
-.back-button a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    font-weight: bold;
+    color: #ffffff;
 }
 
 .section {
@@ -122,6 +116,7 @@ h1, h2, h3 {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    
 }
 
 .half-width {
@@ -156,7 +151,7 @@ h1, h2, h3 {
 <body>
 <div class="banner">
     <div class="back-button">
-        <a href="../../main/VLab.php" title="Back"><i class="bi bi-arrow-left-circle-fill"></i></a>
+        <a href="../../main/VLab.php" title="Back">Back</a>
     </div>
 </div>
 <div class="container">

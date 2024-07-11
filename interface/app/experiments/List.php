@@ -489,11 +489,11 @@ header{
    padding-top: 40px;
    margin-top: 78px;
    height: 100%;
-   background-color: #f2f2f2 repeat;
+   background-color: #f2f2f2 ;
    display: flex;
    justify-content: center;
    color: #971426;
-   width: fit-content;
+   width: 100%;
 }
 
 #b1{

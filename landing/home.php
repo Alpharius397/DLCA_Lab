@@ -455,7 +455,7 @@ img.logo{
             <form id="login" action="login/login.php" class="input-group" method="post">
                 <input type="text" id="user" name="user" class="input-field lo" placeholder="Username" required>
                 <input type="password" id="pass" name="pass" class="input-field lo" placeholder="Enter Password" required>
-                <input type='text' id='who' name='who' value='student' style='display:none'>
+                <input type='text' class='who' name='who' value='student' style='display:none'>
                 <button type="submit" class="submit-btn">Log In</button>
                 
                 <?php if(isset($_GET['error1'])) { ?>
@@ -468,7 +468,7 @@ img.logo{
     
             <form action="register/register.php" method="post" id="register" class="input-group" onsubmit="validateForm()">
                 <input type="text" id="name" name="name" class="input-field re" placeholder="Name" required>
-                <input type='text' id='who' name='who' value='student' style='display:none'>
+                <input type='text' class='who' name='who' value='student' style='display:none'>
                 <input type="text" id="username" name="username" class="input-field re" placeholder="Username" required>
                 <input type="email" id="email" name="email" class="input-field re" placeholder="Email Id" required>
                 <input type="text" class="input-field re" id="create" name="create" placeholder="Create Password" minlength="8" maxlength="20" required>
@@ -544,8 +544,8 @@ img.logo{
     var z=document.getElementById("btn");
     var log = document.getElementById('log');
     var reg =document.getElementById('reg');
-    var who =document.querySelectorAll('#who');
-                    console.log(who)
+    var who =document.querySelectorAll('.who');
+
     function register(){
         x.style.left = "-400px";
         y.style.left = "40px";
