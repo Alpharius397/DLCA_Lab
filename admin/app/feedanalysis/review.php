@@ -66,23 +66,26 @@
             position: fixed;
             top: 0;
             left: 0;
-            height: 60px;
+            height: 30px;
             z-index: 100;
         }
 
         .back-button {
-            left: 20px;
+            text-align: left;
             font-size: medium;
+            margin-right: 50px;
         }
 
         header a {
+            margin: 15px;
             color: #ffffff;
             text-decoration: none;
             padding: 5px;
             transition: all 0.4s;
         }
 
-        header a:hover {
+        a:hover {
+
             border-radius: 5px;
             font-size: 120%;
         }
@@ -209,9 +212,10 @@
     </style>
 </head>
 <body>
-    <header class="Nav">
+<header class="Nav">
         <a href="../../main/interface.php" class="back-button">Back</a>
-        <a href="analysis.php" style="margin-left:20px">Feedback Analysis</a>
+        <a href="analysis.php">Feedback Analysis</a>
+        <a href="review.php">Feedback Edit</a>
     </header>
     
     <main>

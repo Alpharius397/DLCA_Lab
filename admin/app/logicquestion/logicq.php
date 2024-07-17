@@ -40,47 +40,50 @@
     <meta charset="UTF-8">
     <title>Experiment: Aim, Theory, and Procedure</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        
+
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            background-size: 100% 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             margin: 0;
             padding: 0;
+            background-size: 100% 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         header {
+            display: flex;
+            align-items: center;
             background-color: #971426;
+            width: 100%;
+            padding: 20px;
             color: #ffffff;
-            padding: 10px 20px;
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
+            height: 30px;
             z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
         .back-button {
-            color: #ffffff;
-            text-decoration: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            text-align: left;
+            font-size: medium;
+            margin-right: 50px;
         }
 
-        .back-button:hover {
-            background-color: #6d0d1a;
+        header a {
+            margin: 15px;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 5px;
+            transition: all 0.4s;
+        }
+
+        a:hover {
+
+            border-radius: 5px;
+            font-size: 120%;
         }
 
         main {
@@ -108,13 +111,14 @@
             font-weight: bold;
         }
 
-        input[type='text'], input[type='search'], input[type='number'], textarea, select {
+        input[type='text'], input[type='search'], input[type='number'], textarea, .select{
             width: 40%; /* Adjusted width for smaller boxes */
             padding: 8px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 16px;
+            margin-top: 10px ;
         }
 
         input[type='submit'], input[type='button'],button, input[type='reset'] {
@@ -153,46 +157,42 @@
             color: #ffffff;
         }
 
+        th {
+            color: #971426;
+        }
+
         html {
             scroll-behavior: smooth;
         }
 
         .pages {
-            text-align: center; /* Center align the pagination buttons */
-            margin-top: 10px;
+            text-align: right;
+            margin: 20px 0;
         }
 
-        .page-buttons {
-            display: flex;
-            align-items: center;
-            justify-content: center; /* Center align the buttons horizontally */
+        .pages select {
+            padding: 5px;
         }
 
-        .page-buttons a {
-            background-color: #971426;
-            color: #ffffff;
-            border: none;
-            padding: 8px 16px;
-            text-decoration: none;
-            font-size: 16px;
-            margin: 0 5px; /* Add margin between buttons */
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            cursor: pointer;
+        .actions form {
+            display: inline-block;
         }
 
-        .page-buttons a:hover {
-            background-color: #6d0d1a;
+        #asd,.select_label{
+            display: inline-block;
         }
-        
+
+        .select{
+            width: 20%;
+            display: inline-block;
+        }
 
     </style>
 </head>
 <body>
-  <header class="Nav">
+<header class="Nav">
         <a href="../../main/interface.php" class="back-button">Back</a>
-        
-    </header>
+</header>
 
     <main>
         <div class="Dhruv">
@@ -232,7 +232,7 @@
 <div class='pages'>
     <form id="page" method="post">
         <input type='text' value="logic-ques" name='path' id='path' style='display: none;'>
-        <label for="options">Page:</label>
+        <label for="options" id="asd">Page:</label>
         <select id="options" name="options">
             <?php
                 include('../../../databaseinfo/page_setup/paging.php');
@@ -257,8 +257,8 @@
                     <input type='text' name='opt3' id='opt3'value="what" required><br>
                     <label for='opt4'> Option 4: </label>
                     <input type='text' name='opt4' id='opt4'value="what" required><br>
-                    <label for='ans'> Answer: </label>
-                    <select id='ans' name='ans' required>  
+                    <label for='ans' class="select_label">Answer:</label>
+                    <select id='ans' name='ans' class='select' required>   
                         <option value="a">A</option>
                         <option value="b">B</option>
                         <option value="c">C</option>
@@ -285,8 +285,8 @@
                 <input type='text' name='o3' id='o3' placeholder="Third Option" required><br>
                 <label for='o4'>Fourth Option:</label>
                 <input type='text' name='o4' id='o4' placeholder="Fourth Option" required><br>
-                <label for='new_ans'>Answer:</label>
-                <select id='new_ans' name='new_ans' required>  
+                <label for='new_ans' class="select_label">Answer:</label>
+                <select id='new_ans' name='new_ans' class='select' required>  
                         <option value="a">A</option>
                         <option value="b">B</option>
                         <option value="c">C</option>
