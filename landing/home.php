@@ -149,6 +149,7 @@ img.logo{
   will-change: transform,opacity;
   z-index: 0;
   margin: 0 20px;
+  margin:10px;
 }
 
 .button-16{
@@ -185,6 +186,7 @@ img.logo{
   z-index: 0;
   margin: 0 20px;
   cursor: default;
+  margin:10px;
 }
 
 .button-17:hover {
@@ -313,6 +315,7 @@ img.logo{
       footer{
         background-color: rgb(193, 189, 189);
         border-top: 3px solid rgb(48, 45, 45);
+        overflow: visible;
       }
 
       .font1{
@@ -344,6 +347,7 @@ img.logo{
       .ab-container{
         display: flex;
         justify-content: space-evenly;
+        width: 100%;
         height: 485px;
       }
 
@@ -352,6 +356,7 @@ img.logo{
     .box{
         height:400px;
         width:250px;
+        margin: 10px;
     }
 
    .img{
@@ -371,15 +376,17 @@ img.logo{
 
    .contri{
     background-color: #E7E4E4;
-    width: 1100px;
-    height: 450px;
     border-radius: 8px;
+    margin-bottom: 30px;
+    
    }
 
    .box-con{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
+    width: 100%;
    }
 
    .guide{
@@ -390,6 +397,8 @@ img.logo{
     align-items: center;
     height: 450px;
     border-radius: 8px;
+    margin-left: 10px;
+    margin-right: 10px;
    }
 
    .te-con{
@@ -423,25 +432,7 @@ img.logo{
     text-decoration: underline;
    }
 
-   @media  only screen and (max-width: 1366px) {
-        footer{
-            display: none;
-        }
-
-        .text1{
-            animation: none; 
-        }
-        
-        .button-16{
-            width: 155px;
-        }
-
-        .button-17{
-            width: 155px;
-        }
-    }
-
-    @media  only screen and (max-width: 480px) {
+    @media  only screen and (max-width: 1104px) {
         footer{
             display: none;
         }
@@ -549,28 +540,29 @@ img.logo{
 
         <div class="contri">
             <div class="te-con"><h1>Contributors</h1></div>
-        <div class="box-con">
-        <div class="box">
-            <div class="img"></div>
-            <div class="name"><h3>Raj More</h3></div>
+            <div class="box-con">
+                <div class="box">
+                    <div class="img"></div>
+                    <div class="name"><h3>Raj More</h3></div>
+                </div>
+
+                <div class="box">
+                    <div class="img"></div>
+                    <div class="name"><h3>Aryan Mandke</h3></div>
+                </div>
+
+                <div class="box">
+                    <div class="img"></div>
+                    <div class="name"><h3>Pranav Lohar</h3></div>
+                </div>
+
+                <div class="box">
+                    <div class="img"></div>
+                    <div class="name"><h3>Dhruv Mavani</h3></div>
+                </div>
+        </div>
         </div>
 
-        <div class="box">
-            <div class="img"></div>
-            <div class="name"><h3>Aryan Mandke</h3></div>
-        </div>
-
-        <div class="box">
-            <div class="img"></div>
-            <div class="name"><h3>Pranav Lohar</h3></div>
-        </div>
-
-        <div class="box">
-            <div class="img"></div>
-            <div class="name"><h3>Dhruv Mavani</h3></div>
-        </div>
-        </div>
-        </div>
     </div>
     
 </footer>

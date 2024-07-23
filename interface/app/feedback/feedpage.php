@@ -301,6 +301,8 @@
     </div>
     </div>
 </main>
+
+<a href="#submit" id="scroll" style="display:none"></a>
 </body>
 
 </html>
@@ -442,6 +444,12 @@
                         }
                         
                     }?>
+
+<?php 
+                if( isset($_POST['options']) || ((isset($_GET['found'])|| isset($_GET['sort']) || isset($_GET['how']) || isset($_GET['which'])) && isset($_GET['what']))){
+                    echo "document.getElementById('scroll').click();";
+                }
+            ?>
    </script>
 </body>
 </html>

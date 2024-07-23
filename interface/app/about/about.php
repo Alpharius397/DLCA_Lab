@@ -19,39 +19,17 @@ body {
     color: #333;
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    filter: blur(10px);
-    z-index: -1;
-}
+header {
+            display: flex;
+            background-color: #971426; 
+            padding: 20px;
+            color: #ffffff;
+            width: 100%;
+            box-sizing: border-box;
+        }
 
 .container {
     padding: 20px;
-}
-
-.banner {
-    background-color: #8B0000;
-    height: 70px;
-    position: relative;
-}
-
-.back-button {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-}
-
-.back-button a{
-    text-decoration: none;
-    font-weight: bold;
-    color: #ffffff;
 }
 
 .section {
@@ -145,15 +123,27 @@ h1, h2, h3 {
 
 .spacing {
     margin-right: 20px;
-}
+
+}        
+header h3{
+            margin: auto;
+            text-align: center;
+        }
+
+        header a{
+            text-decoration: none;
+            font-weight: bold;
+            color: #ffffff;
+        }
 </style>
 </head>
 <body>
-<div class="banner">
-    <div class="back-button">
-        <a href="../../main/VLab.php" title="Back">Back</a>
-    </div>
-</div>
+    <header>
+        <a href="../../main/VLab.php" class="back-button">Back</a>
+        <h3>About Us</h3>
+        <a style="-ms-user-select: none;user-select: none;color: #971426;" class="white" >Back</a>
+    </header>
+
 <div class="container">
     <div class="section full-width">
         <h1>About Us</h1>

@@ -121,13 +121,10 @@
     #algoTable{
         width: 95%;
         border-collapse: collapse;
-        display: flex-start;
+        display: inline-block;
         margin: auto;
-
-
         margin-top: 10px;
         margin-bottom: 10px;
-        display: none;
     }
     
     #algoTable th, td{
@@ -316,6 +313,11 @@
         #John_Cena{
             border: 0px solid white;
             background-color: rgba(255, 255, 255, 0);
+        }
+
+        .table{
+            display: flex;
+            margin: 5px;
         }
     </style>
 </head>
