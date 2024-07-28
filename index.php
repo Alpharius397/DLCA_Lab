@@ -1,4 +1,4 @@
 <?php
 
-header("Location: landing/home.php");
+    header("Location: landing/home.php");
 ?>
