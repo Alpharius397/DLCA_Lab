@@ -382,6 +382,7 @@
  }
 
  .style-37 {
+ font-family: Poppins;
  color: #971426;
  background-color: white;
  text-decoration: none solid #971426;

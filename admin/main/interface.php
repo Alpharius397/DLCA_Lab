@@ -384,6 +384,7 @@
  }
 
  .style-37 {
+ font-family: Poppins;
  color: #971426;
  text-decoration: none solid #971426;
  cursor: pointer;

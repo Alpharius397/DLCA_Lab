@@ -389,6 +389,7 @@ header{
 
  .style-37 {
  color: #971426;
+ font-family: Poppins;
  text-decoration: none solid #971426;
  cursor: pointer;
  text-overflow: ellipsis;
