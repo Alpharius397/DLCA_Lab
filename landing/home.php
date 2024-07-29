@@ -19,7 +19,8 @@ body{
 
 main{
     display: flex;
-    height: 700px;
+    width: 100vw;
+    height: 100vh;
 }
 
 
@@ -446,8 +447,8 @@ img.logo{
         }
 
         .right{
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
         }
 
         .button-16{
@@ -520,52 +521,7 @@ img.logo{
  </div>
 </main>
 
-<footer>
-    <div class="font1">
-        <h1>Department Of Computer Engineering  </h1>
-    </div>
-    <div class="font2">
-        <h2>About Us</h2>
-    </div>
 
-    <div class="ab-container">
-        <div class="guide">
-        <div class="box ">
-            <h1>Guide</h1>
-            <div class="img"></div>
-            <div class="name"><h3>Prof. Priyanka Deshmukh</h3></div>
-        </div>
-        </div>
-       
-
-        <div class="contri">
-            <div class="te-con"><h1>Contributors</h1></div>
-            <div class="box-con">
-                <div class="box">
-                    <div class="img"></div>
-                    <div class="name"><h3>Raj More</h3></div>
-                </div>
-
-                <div class="box">
-                    <div class="img"></div>
-                    <div class="name"><h3>Aryan Mandke</h3></div>
-                </div>
-
-                <div class="box">
-                    <div class="img"></div>
-                    <div class="name"><h3>Pranav Lohar</h3></div>
-                </div>
-
-                <div class="box">
-                    <div class="img"></div>
-                    <div class="name"><h3>Dhruv Mavani</h3></div>
-                </div>
-        </div>
-        </div>
-
-    </div>
-    
-</footer>
 </body>
 <script>
 

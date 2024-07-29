@@ -61,7 +61,8 @@ h1, h2, h3 {
 
 .person img {
     width: 100%;
-    border-radius: 50%;
+    border-radius: 10%;
+    height: 200px;
 }
 
 .person .name {
@@ -196,7 +197,7 @@ header h3{
             <h2>Our Team</h2>
             <div class="contributors">
                 <div class="person">
-                    <img src="placeholder.jpg" alt="Raj More">
+                    <img src="../../../images/contri/raj.jpg" alt="Raj More">
                     <div class="name">Raj More</div>
                     <div class="links">
                         <a href="mailto:rajmore@example.com"><i class="bi bi-envelope"></i></a>
@@ -204,7 +205,7 @@ header h3{
                     </div>
                 </div>
                 <div class="person">
-                    <img src="placeholder.jpg" alt="Aryan Mandke">
+                    <img src="../../../images/contri/aryan.jpg" alt="Aryan Mandke">
                     <div class="name">Aryan Mandke</div>
                     <div class="links">
                         <a href="mailto:aryanmandke@example.com"><i class="bi bi-envelope"></i></a>
@@ -212,7 +213,7 @@ header h3{
                     </div>
                 </div>
                 <div class="person">
-                    <img src="placeholder.jpg" alt="Pranav Lohar">
+                    <img src="../../../images/contri/pranav.jpg" alt="Pranav Lohar">
                     <div class="name">Pranav Lohar</div>
                     <div class="links">
                         <a href="mailto:pranavlohar@example.com"><i class="bi bi-envelope"></i></a>
@@ -220,7 +221,7 @@ header h3{
                     </div>
                 </div>
                 <div class="person">
-                    <img src="placeholder.jpg" alt="Dhruv Mavani">
+                    <img src="../../../images/contri/dhruv.jpg" alt="Dhruv Mavani">
                     <div class="name">Dhruv Mavani</div>
                     <div class="links">
                         <a href="mailto:dhruvmavani@example.com"><i class="bi bi-envelope"></i></a>
