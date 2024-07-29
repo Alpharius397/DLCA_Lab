@@ -22,25 +22,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />  
+    <link rel="stylesheet" href="../../../formula/bootstrap.css">  
     <style>
-    body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            margin: auto;
-            padding: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            background-color: #f2f2f2;
-        }
+
 header{
    z-index: 100;
 }
 
-.style-1 {
+body {
+ cursor: auto;
+ margin: 0px;
+ padding: 0px;
+ min-width: 320px;
+ font-family: Montserrat, sans-serif;
+ font-weight: 400;
+ }
+
+ .style-1 {
  position: fixed;
  z-index: 19;
  right: 20px;
@@ -126,7 +124,6 @@ header{
  top: 0px;
  width: 100%;
  height: 796px;
- background-image: linear-gradient(rgba(153, 4, 4, 0), rgba(153, 4, 4, 0));
  background-size: auto, cover;
  background-repeat: repeat, no-repeat;
  background-origin: padding-box, padding-box;
@@ -155,6 +152,7 @@ header{
  width: 100%;
  position: relative;
  padding: 0px 20px;
+ margin: 0px auto;
  z-index: 19;
  display: flex;
  -webkit-box-align: center;
@@ -232,15 +230,13 @@ header{
  }
 
  .style-21 {
- display: flex;
+   display: flex;
  -webkit-box-align: center;
- align-items: end;
+ align-items: center;
  -webkit-box-pack: end;
  justify-content: flex-end;
  width: 100%;
  margin: 0px 20px;
- position: relative;
- right: 0;
  }
 
  .style-22 {
@@ -388,8 +384,9 @@ header{
  }
 
  .style-37 {
- color: #971426;
  font-family: Poppins;
+ color: #971426;
+ background-color: white;
  text-decoration: none solid #971426;
  cursor: pointer;
  text-overflow: ellipsis;
@@ -398,11 +395,17 @@ header{
  overflow: hidden;
  width: 100%;
  padding: 10px;
+ padding-top: 10px;
+ border:0px;
  white-space: nowrap;
  transition: all ease 0.3s;
  font-size: 23px;
  }
 
+ form{
+   padding: 0px;
+   margin: 0px;
+ }
  .style-37:hover{
     font-size: 25px;
     border-radius: 6px;
@@ -459,8 +462,6 @@ header{
       overflow: hidden;
    }
 
-   
-
    .box p{
       font-size: 1.23rem;
       font-weight: 450;
@@ -468,8 +469,6 @@ header{
       border-bottom: 3px solid black;
       padding-bottom: 4px;
    }
-
-   
 
 .start{
      text-align: center;
@@ -487,9 +486,8 @@ header{
 }
 
 .list{
-   padding-top: 40px;
+   padding-top: 30px;
    margin-top: 78px;
-   height: 100%;
    background-color: #f2f2f2 ;
    display: flex;
    justify-content: center;
@@ -532,18 +530,17 @@ header{
 }
   
     </style>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../../formula/bootstrap.css">
 </head>
 <body>
 <header>
-
+ <div class="">
  <div class="style-1"><button class="style-2">
- <div data-name="arrow_small_top" class="style-3"><svg width="32" height="32" viewBox="0 0 32 32" class="style-4">
- <path d="M24.567 20.862a1.619 1.619 0 000-2.283l-7.417-7.433a1.618 1.618 0 00-2.3 0l-7.417 7.433a1.619 1.619 0 000 2.283 1.619 1.619 0 002.283 0l6.283-6.283 6.283 6.283a1.619 1.619 0 002.283 0z" class=""></path>
- </svg></div>
+ <div data-name="arrow_small_top" class="style-3"></div>
  </button></div>
  <div class="style-5">
-
+ <div class="">
+ <header class="">
  <div class="style-6">
  <div class="style-7"></div>
  <div class="style-8"></div>
@@ -554,7 +551,7 @@ header{
  <div class="style-13">
  <figure class="style-14">
  <div class="style-15"><a class="style-16" href="/website-maker/preview/lang/site/1145181/">
- <figure class="style-17"><a href="VLab.php"><img color="default" width="150" class="style-18" alt="Navbar logo" sizes="[object Object]" src="../../../images/background/kjsieit-logo.svg" /></a></figure>
+ <figure class="style-17"><a href="../../main/VLab.php"><img color="default" width="150" class="style-18" alt="Navbar logo" sizes="[object Object]" src="../../../images/background/kjsieit-logo.svg" /></a></figure>
  <div class="style-19">
  <div class="style-20"></div>
  </div>
@@ -564,22 +561,31 @@ header{
  <div class="style-21">
  <nav class="style-22">
  <div class="style-23">
- <div class="style-24"><a class="style-25"  href="../../main/VLab.php">Home</a></div>
+ <div class="style-24"></div>
  </div>
  <div class="style-26">
- <div class="style-27"><a class="style-28" href="../prerequisites/pre.php">Prerequisites</a></div>
+ <div class="style-27"><a class="style-31"  href="../../main/VLab.php">Home</a></div>
  </div>
  <div class="style-26">
- <div class="style-27"><a class="style-28" href="List.php">Experiments</a></div>
+ <div class="style-27"><a class="style-31" href="../prerequisites/pre.php">Prerequisites</a></div>
+ </div>
+ <div class="style-26">
+ <div class="style-27"><a class="style-31" href="List.php">Experiments</a></div>
  </div>
  <div class="style-29">
  <div class="style-30"><a class="style-31" href="../feedback/feedpage.php">Feedback</a></div>
  </div>
  <div class="style-32">
- <div class="style-33"><a class="style-34" href="">About Us</a></div>
+ <div class="style-33"><a class="style-34" href="../about/about.php">About Us</a></div>
  </div>
  <div class="style-35">
- <div class="style-36"><a class="style-37" href="../../logout/logout.php">Logout</a></div>
+ <div class="style-36"><form action="../../logout/logout.php" onsubmit="return deleteAlert();"><input type='submit' class="style-37" value="Logout"></form></div>
+ </div>
+ </nav>
+ <div class="style-41">
+ <div class="style-42">
+
+ </div>
  </div>
 </header>
 

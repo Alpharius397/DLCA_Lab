@@ -163,13 +163,15 @@
         }
 
         .submit-button {
+            margin-left: 35%;
             background-color: #971426;
             color: #ffffff;
-            padding: 10px 20px;
+            padding: 10px 10px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: 10px;
+            width: 30%;
         }
 
         .tab{
@@ -177,13 +179,14 @@
         }
 
         .feed-button{
+            margin-left: 35%;
             background-color: #971426;
             color: #ffffff;
-            padding: 10px 20px;
+            padding: 10px 10px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin-top: 20px;
+            width: 30%;
             display: none;
         }
 
@@ -202,6 +205,7 @@
             color: green;
             font-weight: bold;
             margin-top: 20px;
+            text-align: center;
         }
         header {
             display: flex;

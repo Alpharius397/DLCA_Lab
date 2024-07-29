@@ -107,13 +107,31 @@
         }
 
         .submit-button {
+            margin-left: 35%;
             background-color: #971426;
             color: #ffffff;
-            padding: 10px 20px;
+            padding: 10px 10px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: 10px;
+            width: 30%;
+        }
+
+        .tab{
+            width: 100%;
+        }
+
+        .feed-button{
+            margin-left: 35%;
+            background-color: #971426;
+            color: #ffffff;
+            padding: 10px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 30%;
+            display: none;
         }
 
         .feedback {
@@ -125,17 +143,7 @@
             color: green;
             font-weight: bold;
             margin-top: 20px;
-        }
-
-        .feed-button{
-            background-color: #971426;
-            color: #ffffff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 20px;
-            display: none;
+            text-align: center;
         }
  
         header {
@@ -203,7 +211,7 @@
             <ol id='answers'>
                
             </ol>
-            <button class="submit-button" onclick="submitQuiz1()">Submit</button>
+            <button class="submit-button" onclick="submitQuiz1()">Check Answer</button>
             <p class="score"></p>
             <a href="logicfeed.php"><button class="feed-button">Submit Feedback</button></a>
         </div>
