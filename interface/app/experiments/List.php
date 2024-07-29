@@ -153,10 +153,8 @@ header{
  font-family: Poppins;
  font-weight: 300;
  width: 100%;
- max-width: 1500px;
  position: relative;
  padding: 0px 20px;
- margin: 0px auto;
  z-index: 19;
  display: flex;
  -webkit-box-align: center;
@@ -236,11 +234,13 @@ header{
  .style-21 {
  display: flex;
  -webkit-box-align: center;
- align-items: center;
+ align-items: end;
  -webkit-box-pack: end;
  justify-content: flex-end;
  width: 100%;
  margin: 0px 20px;
+ position: relative;
+ right: 0;
  }
 
  .style-22 {

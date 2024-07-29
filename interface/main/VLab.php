@@ -148,7 +148,6 @@
  font-family: Poppins;
  font-weight: 300;
  width: 100%;
- max-width: 1500px;
  position: relative;
  padding: 0px 20px;
  margin: 0px auto;
