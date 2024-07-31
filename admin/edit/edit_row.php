@@ -21,10 +21,10 @@
         $path = $_POST['path'];
 
         if(isset($_POST['username']) && isset($_POST["exp"]) && isset($_POST['rating']) && isset($_POST['feed'])){
-            $user = $_POST['username'];
-            $exp = $_POST["exp"];
-            $rating = $_POST['rating'];
-            $feed = $_POST['feed'];
+            $user = mysqli_real_escape_string($conn,filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS));
+            $exp = mysqli_real_escape_string($conn,filter_input(INPUT_POST, "exp", FILTER_SANITIZE_SPECIAL_CHARS));
+            $rating = mysqli_real_escape_string($conn,filter_input(INPUT_POST, 'rating', FILTER_SANITIZE_SPECIAL_CHARS));
+            $feed = mysqli_real_escape_string($conn,filter_input(INPUT_POST, 'feed', FILTER_SANITIZE_SPECIAL_CHARS));
 
             switch($exp){
                 case 'Logic Gates and IC': $table='logic';break;
@@ -40,14 +40,14 @@
         }
 
         if(isset($_POST['ques']) && isset($_POST['index']) &&  isset($_POST['opt1']) && isset($_POST['opt2']) && isset($_POST['opt3']) && isset($_POST['opt4']) &&isset($_POST['ans'])){
-           
-            $ques = $_POST['ques'];
-            $index = $_POST['index'];
-            $opt1 = $_POST['opt1'];
-            $opt2 = $_POST['opt2'];
-            $opt3 = $_POST['opt3'];
-            $opt4 = $_POST['opt4'];
-            $ans = $_POST['ans'];
+
+            $index = mysqli_real_escape_string($conn,filter_input(INPUT_POST, 'index', FILTER_SANITIZE_SPECIAL_CHARS));
+            $ques =  mysqli_real_escape_string($conn,filter_input(INPUT_POST, 'quest', FILTER_SANITIZE_SPECIAL_CHARS));
+            $opt1 = mysqli_real_escape_string($conn,filter_input(INPUT_POST, 'o1', FILTER_SANITIZE_SPECIAL_CHARS));
+            $opt2 = mysqli_real_escape_string($conn,filter_input(INPUT_POST, 'o2', FILTER_SANITIZE_SPECIAL_CHARS));
+            $opt3 = mysqli_real_escape_string($conn,filter_input(INPUT_POST, 'o3', FILTER_SANITIZE_SPECIAL_CHARS));
+            $opt4 = mysqli_real_escape_string($conn,filter_input(INPUT_POST, 'o4', FILTER_SANITIZE_SPECIAL_CHARS));
+            $ans = mysqli_real_escape_string($conn,filter_input(INPUT_POST, 'new_ans', FILTER_SANITIZE_SPECIAL_CHARS));
     
             $sql = "UPDATE questions set user='$ques', option1='$opt1', option2='$opt2', option3='$opt3', option4='$opt4',answer='$ans' where id='$index'";
         }
