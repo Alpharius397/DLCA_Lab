@@ -2704,7 +2704,7 @@ function logicCount(reset){
         if(reset){
             temp='';
         }
-        if(stats[tries]>=99){
+        else if(stats[tries]>=99){
             temp=':)';
         }
         else{
