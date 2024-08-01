@@ -10,6 +10,7 @@
     $result = mysqli_query($conn, $sql);
 
     $studentdata = array();
+    $i=0;
     while($row = $result->fetch_array()) { 
         array_push($studentdata,array( 
             "Username" => $row["user"], 

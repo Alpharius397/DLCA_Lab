@@ -1811,14 +1811,14 @@ function app_join(index,user,email,one){
                     <div class='actions'>
                     <form action='../../add/add_admin.php' method='post' onsubmit='return deleteAlert();'>
                     <input type='text' name='path' id='path' value='req' readonly style='display:none;'>
-                    <input type="text" name="admin" id="admin" value = ${user} style='display:none;' readonly>
+                    <input type="text" name="admin" id="admin" value = "${user}" style='display:none;' readonly>
                     <input type="submit" name="submit" value="Add">
                     </form>
 
                     <form action='../../del/del_row.php' method='post' onsubmit='return deleteAlert();'>
                     <input type='text' name='path' id='path' value='req' readonly style='display:none;' readonly>
-                    <input type="text" name="admin" id="admin" value = ${user} style='display:none;' readonly>
-                    <input type="text" name="mail" id="mail" value = ${email} style='display:none;' readonly>
+                    <input type="text" name="admin" id="admin" value = "${user}" style='display:none;' readonly>
+                    <input type="text" name="mail" id="mail" value = "${email}" style='display:none;' readonly>
                     <input type="submit" name="submit" value="Delete">
                     </form>
                     </div>
