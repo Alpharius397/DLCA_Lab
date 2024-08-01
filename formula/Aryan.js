@@ -1299,7 +1299,7 @@ function app_admin(index,user,exp,rate,feed,one){
                     <button data-user=${user} data-exp=${exp} data-index=${index} class="edit">Edit</button>
                     <form action='../../del/del_row.php' method='post' onsubmit='return deleteAlert();'>
                     <input type='text' name='path' id='path' value='review' readonly style='display:none;' readonly>
-                    <input type="text" name="user" id="user${index}" value = ${user} style='display:none;' readonly>
+                    <input type="text" name="user" id="user${index}" value = "${user}" style='display:none;' readonly>
                     <input type="text" name="exp" id="exp${index}" value = ${exp} style='display:none;' readonly>
                     <input type="submit" name="submit" value="Delete">
                     </form>
