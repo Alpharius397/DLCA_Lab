@@ -596,7 +596,7 @@ body {
 <main>
   
 
-   <div class="box" id="b1">
+   <div class="box" id="b1" style="margin-left:50px">
       <p>Logic Gates</p>
      <div class="imgcon">
          <div class="img1" style="background-image: url('../../../images/exp/logicgate.jpg');"></div>
@@ -636,7 +636,7 @@ body {
       <div class="b"><a href='encode/encodeTheo.php'><button class="start">START</button></a></div>
    </div>
 
-   <div class="box" id="b6">
+   <div class="box" id="b6" style="margin-right:50px">
       <p>MUX and DeMUX</p>
       <div class="imgcon">
          <div class="img2"><img class='asd' src='../../../images/exp/mux.jpg' width="280px"></div>

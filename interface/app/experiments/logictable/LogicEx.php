@@ -275,6 +275,26 @@
         margin-bottom: 10px;
     }
 
+    #result{
+            display: flex;
+            margin: 5px auto;
+            justify-content:space-evenly;
+        }
+
+        #result p{
+            display: inline-block;
+            margin: 5px;
+            font-size: 16px;
+        }
+
+        #wrong{
+            color: #971426;
+        }
+
+        #correct{
+            color: #00904a;
+        }
+
     </style>
 </head>
 <body>
@@ -321,7 +341,7 @@
         </div><br>
 
         <button id="submit">Submit</button>
-        <button id="nextQuestion">Next Question</button>
+        <button id="nextQuestion">Restart Attempt</button>
     <div class="tab1">
         <table id="truthTable">
             <thead>
@@ -340,19 +360,26 @@
         <div class = "T">
     <div id ="sim"></div>
     <div id ="ta">
-        <table style="border: 1px solid #ccc;border-collapse: collapse;;padding:1px;margin:0px">
+        <table style="border: 1px solid black;padding:1px;margin:0px">
             <tr>
+
                 <th style="color:#00904a;padding: 5px;">Green</th>
                 <th style="color:#00904a;padding: 5px;">1</th>
             </tr>
-            <tr>
+            <tr >
                 <th style="color:red;padding: 5px;">Red</th>
                 <th style="color:red;padding: 5px;">0</th>
             </tr>
         </table>
     
     </div>
+
     </div>
+    <div id = "result">
+            <p id="total" class="remark">Total Attempts: <b id="tot">0</b></p>
+            <p id="correct" class="remark">Correctly Answered: <b id="corr">0</b></p>
+            <p id="wrong" class="remark">Incorrectly Answered: <b id="wro">0</b></p>
+        </div>
 
       <script src="../../../../formula/Aryan.js"></script>
         <script>
@@ -360,15 +387,18 @@
             const sub = document.getElementById('submit');
             const next = document.getElementById('nextQuestion');
             const sim = document.getElementById('sim');
+            const ta =document.getElementById("ta");
+            var stats = {'correct':0,'wrong':0,'total':0};
+            var attempts = {'correct':document.getElementById('corr'),'wrong':document.getElementById('wro'),'total':document.getElementById('tot')}
 
             window.addEventListener("load", async ()=>{ generateRandomValues(false,sim);});
 
             sub.addEventListener('click',async () =>{
-                
+
                 buttondisabled(sub);
                 buttondisabled(next);
                 checkAnswer(sim);
-                
+                logicCount(false);
                 await sleep(1000);
 
                 buttonEnBlu(sub);
@@ -379,7 +409,9 @@
                 buttondisabled(sub);
                 buttondisabled(next);
                 generateRandomValues(true,sim);
-                
+                stats = {'correct':0,'wrong':0,'total':0};
+                logicCount(true);
+
                 await sleep(1000);
 
                 buttonEnBlu(sub);

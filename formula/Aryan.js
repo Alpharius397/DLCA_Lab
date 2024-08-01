@@ -1142,6 +1142,7 @@ function generateRandomValues(A,sim) {
     if (A){
         hide(sim);
         hide(tab);
+        hide(ta);
         document.getElementById('table1').innerHTML = ``;
     }
 }
@@ -1161,6 +1162,7 @@ function checkAnswer(sim) {
     gatesdisplay1(sim,inputValA,inputValB,correctOutput,gate(selectedGate));
     reveal(sim);
     reveal(tab);
+    reveal(ta);
     const newRow = document.createElement('tr');
     if(selectedGate == 'not'){
         inputValB = '-';
@@ -1172,7 +1174,7 @@ function checkAnswer(sim) {
         <td>${selectedGate.toUpperCase()}</td>
         <td>${correctOutput}</td>
         <td>${userOutput}</td>
-        <td class="${correctOutput === userOutput ? 'correct' : 'incorrect'}">${correctOutput === userOutput ? 'Correct' : 'Incorrect'}</td>
+        <td id='this_one' class="${correctOutput === userOutput ? 'correct' : 'incorrect'}">${correctOutput === userOutput ? 'Correct' : 'Incorrect'}</td>
     `;
     table1.appendChild(newRow);
     generateRandomValues(false,sim);
@@ -2545,6 +2547,7 @@ function submitMUX(count){
 
 }
 
+/** Generates a encoder/decoder table. size->int */
 function newEncodeTable(size){
     let which = Math.random()+0.1>0.5? 1:0;
 
@@ -2567,6 +2570,7 @@ function newEncodeTable(size){
     newEncode(type[which]);
 }
 
+/** Creates questions () for encoder/decoder. type->string */
 function newEncode(type){
     question.innerHTML = `${context[type]['ques']}`;
     let available = new Set();
@@ -2607,6 +2611,7 @@ function newEncode(type){
     }
 }
 
+/** Checks if answer is correct or not. If correct, proceed with next question else show user it's wrong (same as checkMUX())*/
 function checkEncode(){
     var options = document.querySelectorAll('.this_one');
     var flag = 0;
@@ -2655,6 +2660,7 @@ function checkEncode(){
     }
 }
 
+/** Makes the entire table,option everything */
 function createEOption(i,size,option,question,randomBinary,which,table,input){
 
     var status = (table,value,which) => {if(table==1 && which=='Encoder'){ return `Output ${value}`;}if(table==1 && which=='Decoder'){ return `Input ${value}`;} else if(which=='Encoder'){ return `Input ${value}`;} else {return `Output ${value}`;}};
@@ -2676,4 +2682,35 @@ function createEOption(i,size,option,question,randomBinary,which,table,input){
 
 
     tab.appendChild(li);
+}
+
+/**Does the logic gates exercise score calculation and handles gui. reset->bool */
+function logicCount(reset){
+    var lastOption = document.querySelectorAll('#this_one');
+
+    stats['total']+=1;
+    if(!reset && lastOption[lastOption.length-1].className=='incorrect'){
+        stats['wrong']+=1;
+    }
+    else if(!reset && lastOption[lastOption.length-1].className=='correct'){
+        stats['correct']+=1
+    }
+    else{
+        stats = {'correct':0,'wrong':0,'total':0};
+    }
+
+    Object.keys(attempts).forEach(tries => {
+
+        if(reset){
+            temp='';
+        }
+        if(stats[tries]>=99){
+            temp=':)';
+        }
+        else{
+            temp=stats[tries];
+        }
+
+        attempts[tries].innerHTML = `${temp}`;
+    });
 }

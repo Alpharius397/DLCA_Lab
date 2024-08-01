@@ -417,7 +417,7 @@ img.logo{
    }
 
    .error-message, .error{
-    margin-top: 15px;
+    margin-top: 5px;
     font-weight: bolder;
     color: #971426;
    }
@@ -491,7 +491,7 @@ img.logo{
             <form id="login" action="login/login.php" class="input-group" method="post">
                 <input type="text" id="user" name="user" class="input-field lo" placeholder="Username" required>
                 <input type="password" id="pass" name="pass" class="input-field lo" placeholder="Enter Password" required>
-                <input type='text' id='who' name='who' value='student' style='display:none'>
+                <input type='text' id='who' name='who' value='student' style='display:none' readonly>
                 <button type="submit" class="submit-btn">Log In</button>
                 
                 <?php if(isset($_GET['error1'])) { ?>
@@ -502,14 +502,14 @@ img.logo{
             </form>
 
     
-            <form action="register/register.php" method="post" id="register" class="input-group" onsubmit="validateForm()">
+            <form action="register/register.php" method="post" id="register" class="input-group" onsubmit="validateForm(event);">
                 <input type="text" id="name" name="name" class="input-field re" placeholder="Name" required>
-                <input type='text' id='who' name='who' value='student' style='display:none'>
+                <input type='text' id='who' name='who' value='student' style='display:none' readonly>
                 <input type="text" id="username" name="username" class="input-field re" placeholder="Username" required>
                 <input type="email" id="email" name="email" class="input-field re" placeholder="Email Id" required>
                 <input type="text" class="input-field re" id="create" name="create" placeholder="Create Password" minlength="8" maxlength="20" required>
                 <input type="text" class="input-field re" id="confirm" name="confirm" placeholder="Confirm Password" minlength="8" maxlength="20" required>
-                <span id="password-match-error1" class="error-message"></span>
+                <p id="password-match-error" class="error-message"></p>
                 <button type="submit" class="submit-btn" id="reg">Register</button>
                 <?php if(isset($_GET['error2'])) { ?>
             <p class="error">
@@ -525,9 +525,9 @@ img.logo{
 </body>
 <script>
 
-    var confirm = document.getElementById('confirm');
+    var confirm_ = document.getElementById('confirm');
     var create = document.getElementById('create');    
-    var error_log= document.getElementById('password-match-error');
+    var error_log = document.getElementById('password-match-error');
     var stud = document.getElementById('stud');
     var ad = document.getElementById('admin');
     var form = document.querySelector('.form-box');
@@ -537,7 +537,7 @@ img.logo{
     var log = document.getElementById('log');
     var reg =document.getElementById('reg');
     var who =document.querySelectorAll('#who');
-                    console.log(who)
+
     function register(){
         x.style.left = "-400px";
         y.style.left = "40px";
@@ -556,42 +556,39 @@ img.logo{
         reg.style.color='black';
     }
 
-    function validateForm(op) {
+    function validateForm(event) {
 
-            if (confirm.value !== create.value) {
-                error_log.textContent = "Passwords do not match!";
-                return false;
-                
-            } else {
-                error_log.textContent = ""; 
-                return true;
-            }
+        if (!check_value()){
+            event.preventDefault();
+        }
     }
 
     function student(){
         stud.className = 'button-16';
         ad.className = 'button-17';
         who.forEach(wh => {wh.setAttribute('value','student')});
-        create.value='stud';
+        window.alert('Redirecting to student page');
     }
 
     function admin(){
         ad.className = 'button-16';
         stud.className = 'button-17';
         who.forEach(wh => {wh.setAttribute('value','admin')});
+        window.alert('Redirecting to admin page');
 
     }
 
-    confirm.addEventListener("keyup", function () {
-        if (confirm.value !== create.value) {
-            error_log.textContent = "Passwords do not match!";
+    function check_value() {
+        if (confirm.value != create.value) {
+            error_log.innerHTML  = "Passwords do not match!";
+            return false;
         } else {
-            error_log.textContent = "";
+            error_log.innerHTML  = "";
+            return true;
         }
-    });
+    }
 
-    admin();
-    login();
+    confirm_.addEventListener("keyup",check_value);
 
     <?php 
 
@@ -618,6 +615,12 @@ img.logo{
                     echo "login();";
                 }
             }
+
+        }
+
+        else{
+            echo "student();";
+            echo "login();";
 
         }
     

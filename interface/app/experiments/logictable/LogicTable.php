@@ -502,7 +502,6 @@
                     Confirm.innerHTML = ``;
                     buttondisabled(check);
                     buttondisabled(button);
-                    Confirm.innerHTML = ``;
                     
                     inputA.disabled = "true";
                     inputB.disabled = "true";
@@ -529,9 +528,7 @@
             });
 
             check.addEventListener('click', async () => {
-                inputA = document.getElementById('A');
-                inputB = document.getElementById('B');
-                inputC = document.getElementById('C');
+
 
                 var row = document.createElement('tr');
 
@@ -552,7 +549,7 @@
                     sim.style.display = 'block';
                     ta.style.display = 'block';
                     dissappear(colB);
-                    console.log('none');
+
 
                 }
                 else{
