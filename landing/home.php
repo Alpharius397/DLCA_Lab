@@ -465,7 +465,8 @@ img.logo{
 <body>
     <main>
     <div  class="left">
-        <img class="logo"  src="../images/background/kjsieit-logo.svg"> 
+        <a href='../../home.php'> <img class="logo"  src="../../../../images/background/kjsieit-logo.svg"> </a>
+ 
    <div class="container">
     <span class="text1">Welcome To..</span>
     <span class="text2">DLCOA</span>

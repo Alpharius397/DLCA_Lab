@@ -20,7 +20,8 @@ body{
 
 main{
     display: flex;
-    height: 634px;
+    width: 100vw;
+    height: 100vh;
 }
 
 
@@ -93,7 +94,7 @@ img.logo{
     
 }
 
-#changePasswordForm1,#changePasswordForm2{
+#changePasswordForm{
     width: 350px;
     height: 400px;
     position:relative;
@@ -227,6 +228,7 @@ img.logo{
   will-change: transform,opacity;
   z-index: 0;
   margin: 0 20px;
+  margin:10px;
 }
 
 .button-16{
@@ -263,6 +265,7 @@ img.logo{
   z-index: 0;
   margin: 0 20px;
   cursor: default;
+  margin:10px;
 }
 
 .button-17:hover {
@@ -282,7 +285,7 @@ img.logo{
 <body>
     <main>
     <div  class="left">
-        <img class="logo"  src="../../../../images/background/kjsieit-logo.svg"> 
+        <a href='../../home.php'> <img class="logo"  src="../../../../images/background/kjsieit-logo.svg"> </a>
    <div class="container">
     <span class="text1">Welcome To..</span>
     <span class="text2">DLCOA</span>
@@ -301,7 +304,7 @@ img.logo{
             <h2>Change Password</h2>
 
 
-            <form id="changePasswordForm1" action="../mailing/mail.php" method="post">
+            <form id="changePasswordForm" action="../mailing/mail.php" method="post">
                 <input type="email" id="mail" name="email" placeholder="Enter your Email" required>
                 <input type='text' id='who' name='who' value='student' readonly style='display:none'>
                 <span id="password-match-error" class="error-message">
@@ -309,41 +312,29 @@ img.logo{
                 <button type="submit" name="submit">Change Password</button>
             </form>
 
-            
-            <form id="changePasswordForm2" action="../mailing/mail.php" method="post">
-                <input type="email" id="mail" name="email" placeholder="Enter your Email" required>
-                <input type='text' id='who' name='who' value='admin' readonly style='display:none'>
-                <span id="password-match-error" class="error-message">
-                        <?php if (isset($_GET['error2'])){ echo $_GET['error2']; }?> </span>
-                <button type="submit" name="submit">Change Password</button>
-            </form>
         </div>
 </div>  
 </main>
 
-<footer>
-    <div class="font1">
-        <h1>Department Of Computer Engineering  </h1>
-    </div>
-   
     <script>
             var stud = document.getElementById('stud');
             var ad = document.getElementById('admin');
-            var form1 = document.getElementById('changePasswordForm1');
-            var form2 = document.getElementById('changePasswordForm2');
+            var form = document.getElementById('changePasswordForm');
+            var who =document.querySelector('#who');
 
             function student(){
-                ad.className = 'button-17';
                 stud.className = 'button-16';
-                form1.style.display = '';
-                form2.style.display = 'none';
+                ad.className = 'button-17';
+                who.setAttribute('value','admin');
+                window.alert('Redirecting to student page');
             }
 
             function admin(){
                 ad.className = 'button-16';
                 stud.className = 'button-17';
-                form1.style.display = 'none';
-                form2.style.display = '';
+                who.setAttribute('value','admin');
+                window.alert('Redirecting to admin page');
+
             }
 
             student();
@@ -361,6 +352,6 @@ img.logo{
 
 
     </script>
-</footer>
+
 </body>
 </html>

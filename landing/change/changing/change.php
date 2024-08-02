@@ -28,7 +28,8 @@ body{
 
 main{
     display: flex;
-    height: 634px;
+    width: 100vw;
+    height: 100vh;
 }
 
 
@@ -178,12 +179,41 @@ img.logo{
         font-size: 36px;
       }
 
+
+      @media  only screen and (max-width: 1104px) {
+        footer{
+            display: none;
+        }
+
+        .left{
+            display: none;
+        }
+
+        .mid{
+            display: none;
+        }
+
+        .right{
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .button-16{
+            width: 140px;
+        }
+
+        .button-17{
+            width: 140px;
+        }
+    }
+
 </style>
 </head>
 <body>
     <main>
     <div  class="left">
-        <img class="logo"  src="../../../../images/background/kjsieit-logo.svg"> 
+    <a href='../../home.php'> <img class="logo"  src="../../../../images/background/kjsieit-logo.svg"> </a>
+ 
    <div class="container">
     <span class="text1">Welcome To..</span>
     <span class="text2">DLCOA</span>
@@ -211,11 +241,6 @@ img.logo{
 </div>  
 </main>
 
-<footer>
-    <div class="font1">
-        <h1>Department Of Computer Engineering  </h1>
-    </div>
-</footer>
 </body>
 <script>
 
