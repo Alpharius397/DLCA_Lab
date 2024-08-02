@@ -2702,7 +2702,7 @@ function logicCount(reset){
     Object.keys(attempts).forEach(tries => {
 
         if(reset){
-            temp='';
+            temp=0;
         }
         else if(stats[tries]>=99){
             temp=':)';
