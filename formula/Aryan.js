@@ -1164,7 +1164,7 @@ function checkAnswer(sim) {
     reveal(tab);
     reveal(ta);
     const newRow = document.createElement('tr');
-    if(selectedGate == 'not'){
+    if(selectedGate.toLowerCase() == 'not gate'){
         inputValB = '-';
     }
 
