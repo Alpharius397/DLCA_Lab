@@ -558,7 +558,7 @@ img.logo{
 
     function validateForm(event) {
 
-        if (!check_value()){
+        if (!(check_value())){
             event.preventDefault();
         }
     }
@@ -579,7 +579,7 @@ img.logo{
     }
 
     function check_value() {
-        if (confirm.value != create.value) {
+        if (confirm_.value != create.value) {
             error_log.innerHTML  = "Passwords do not match!";
             return false;
         } else {
