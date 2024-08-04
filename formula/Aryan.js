@@ -1782,7 +1782,7 @@ function angle_calculate(scores){
         if(last>arc){
             i-=1;
         }
-        else{
+        else if(last<arc){
             i+=1;
         }
         
