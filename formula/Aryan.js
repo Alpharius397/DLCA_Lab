@@ -964,7 +964,7 @@ function createOption(result,option,ansSet,type){
     var ans = new Set();
 
     if(q.length<=3){
-        console.log(' Insufficient Data (breaking)');
+        console.log(' Insufficient Data (breaking) ');
         location.reload();
     }
 

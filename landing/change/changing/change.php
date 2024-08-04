@@ -1,12 +1,23 @@
-<? session_start(); 
+<?php 
 
-    if(isset($_GET['who'])){
-        if(!($_GET['who']=='admin' || $_GET['who'=='student']))
-        header("Location: ../entry/entry.php?error1=Some error occured! Please try again");
+    session_start(); 
+
+    if(isset($_GET['type'])){
+        if(!($_GET['type']=='admin' || $_GET['type']=='student')){
+            header("Location: ../entry/entry.php?error=Some error occured! Please try again");
+        }
+    }
+    else{
+        header("Location: ../entry/entry.php?error=Some error occured! Please try again");
+
+    }
+
+    if(!(isset($_SESSION['OTP']) && isset($_SESSION['email']))){
+        header("Location: ../../home.php?error1=No OTP, No Change");
     }
         
         
-        ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -207,12 +218,29 @@ img.logo{
         }
     }
 
+    .forgot{
+    margin-top: 15px;
+    text-decoration: none;
+    color: #971426;
+    font-weight: bolder;
+    margin-bottom: 10px;
+   }
+
+   .forgot:hover{
+    text-decoration: underline;
+   }
+   
+    #route{
+        cursor:pointer;
+    }
+
 </style>
 </head>
 <body>
     <main>
     <div  class="left">
-    <a href='../../home.php'> <img class="logo"  src="../../../../images/background/kjsieit-logo.svg"> </a>
+    <p id="route"> <img class="logo"  src="../../../images/background/kjsieit-logo.svg"> </p>
+
  
    <div class="container">
     <span class="text1">Welcome To..</span>
@@ -229,11 +257,11 @@ img.logo{
     
     <div class="container2">
         <h2>Change Password</h2>
-        <form id="changePasswordForm" action="pass_change.php" method="post">
+        <form id="changePasswordForm" action="pass_change.php" method="post" onsubmit="return checkValue();">
             <input type="number" id="otp" name="otp"  minlength="6" maxlength="6" placeholder="Enter OTP" required>
             <input type="password" id="newPassword" name="newPassword" placeholder="Enter New Password" autocomplete="new-password" minlength="8" maxlength="20" required>
             <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm New Password" autocomplete="current-password" minlength="8" maxlength="20" required>
-            <input type='text' id='who' name='who' value=<?php echo $_GET['who']?> readonly style='display:none'>
+            <input type='text' id='who' name='who' value=<?php echo $_GET['type']?> readonly style='display:none'>
             <span id="password-match-error" class="error-message"> <?php if (isset($_GET['error'])){ echo $_GET['error']; }?> </span>
             <button type="submit" name="submit">Change Password</button>
         </form>
@@ -245,17 +273,31 @@ img.logo{
 <script>
 
     window.alert(' OTP has been sent to you. Please check your email.');
-    var confirm = document.getElementById("confirmPassword");
+    var confirm_ = document.getElementById("confirmPassword");
     var error_log = document.getElementById("password-match-error");
     var create = document.getElementById("newPassword");
+    var home =document.getElementById('route');
 
-    confirm.addEventListener("keyup", function () {
-        if (confirm.value !== create.value) {
+    function checkValue() {
+        if (confirm_.value !== create.value) {
             error_log.textContent = "Passwords do not match!";
+            return false;
         } else {
             error_log.textContent = "";
+            return true;
         }
-    }); 
+    }
+
+    confirm_.addEventListener("keyup", checkValue); 
+
+
+    home.addEventListener('click', ()=>{
+        let text="Are you sure about returning to home page?";
+
+        if(confirm(text)){
+            location.href = '../../home.php';
+        }
+    });
 
 </script>
 </html>

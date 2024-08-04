@@ -1,3 +1,11 @@
+<?php
+    session_start();
+
+    unset($_SESSION['OTP']);
+    unset($_SESSION['email']);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -465,7 +473,7 @@ img.logo{
 <body>
     <main>
     <div  class="left">
-        <a href='../../home.php'> <img class="logo"  src="../../../../images/background/kjsieit-logo.svg"> </a>
+        <img class="logo"  src="../images/background/kjsieit-logo.svg">
  
    <div class="container">
     <span class="text1">Welcome To..</span>
@@ -499,11 +507,11 @@ img.logo{
                 <p class="error">
             <?php echo $_GET['error1']; ?><?php } ?><p>
 
-            <p class = 'forgot'><a href='change/entry/entry.php' class='forgot'>Forgot Password?</a></p>
+            <p class = 'forgot'><a href='change/entry/entry.php?type=student' class='forgot'>Forgot Password?</a></p>
             </form>
 
     
-            <form action="register/register.php" method="post" id="register" class="input-group" onsubmit="validateForm(event);">
+            <form action="register/register.php" method="post" id="register" class="input-group" onsubmit="return check_value();">
                 <input type="text" id="name" name="name" class="input-field re" placeholder="Name" required>
                 <input type='text' id='who' name='who' value='student' style='display:none' readonly>
                 <input type="text" id="username" name="username" class="input-field re" placeholder="Username" required>
@@ -538,6 +546,7 @@ img.logo{
     var log = document.getElementById('log');
     var reg =document.getElementById('reg');
     var who =document.querySelectorAll('#who');
+    var forgor =document.querySelector('a.forgot')
 
     function register(){
         x.style.left = "-400px";
@@ -557,18 +566,12 @@ img.logo{
         reg.style.color='black';
     }
 
-    function validateForm(event) {
-
-        if (!(check_value())){
-            event.preventDefault();
-        }
-    }
-
     function student(){
         stud.className = 'button-16';
         ad.className = 'button-17';
         who.forEach(wh => {wh.setAttribute('value','student')});
         window.alert('Redirecting to student page');
+        forgor.href = 'change/entry/entry.php?type=student';
     }
 
     function admin(){
@@ -576,6 +579,8 @@ img.logo{
         stud.className = 'button-17';
         who.forEach(wh => {wh.setAttribute('value','admin')});
         window.alert('Redirecting to admin page');
+        forgor.href = 'change/entry/entry.php?type=admin';
+
 
     }
 

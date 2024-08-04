@@ -26,16 +26,14 @@
         if($who=='student'){
             include($path.'databaseinfo/main/database.php');
             $table = 'info';
-            $idx=1;
         }
 
         else if($who=='admin'){
             include($path.'databaseinfo/main/admin.php');
             $table = 'admin';
-            $idx=2;
         }
         else{
-            header("Location: ../entry/entry.php?error1=Some error occured! Please try again");
+            //header("Location: ../entry/entry.php?error=Some error occured! Please try again");
         }
 
         $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_SPECIAL_CHARS); 
@@ -48,7 +46,7 @@
 
         }
         catch (Exception $e) {
-            header("Location: ../entry/entry.php?error$idx=Some error occured! Please try again.&who=$who");
+            //header("Location: ../entry/entry.php?error=Some error occured! Please try again.&type=$who");
             exit();
         }
 
@@ -65,23 +63,25 @@
 
                 writeMail($email,$message,$subject);
                 
-                header("Location: ../changing/change.php?who=$who");
+                header("Location: ../changing/change.php?type=$who");
                 
             } 
                 
             catch (Exception $e) {
-                header("Location: ../entry/entry.php? error$idx= Some error occured! Please try again.&who=$who");
+                //header("Location: ../entry/entry.php? error= Some error occured! Please try again.&type=$who");
                 exit();
             }
         
         }
 
         else {
-            header("Location: ../entry/entry.php? error$idx= Email ID is not registered!&who=$who");
+            //header("Location: ../entry/entry.php? error= Email ID is not registered!&type=$who");
             exit();
         }
+
+        mysqli_close($conn);
+
         
     }
-    mysqli_close($conn);
 
 ?>

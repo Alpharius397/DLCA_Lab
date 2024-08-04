@@ -1,4 +1,5 @@
-<? session_start() ?>
+<?php session_start();     unset($_SESSION['OTP']);
+    unset($_SESSION['email']);?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,7 +120,7 @@ img.logo{
 
 .container2 {
             width: 350px;
-            height: 300px;
+            height: 310px;
             margin: 6% auto;
             background: #ffffff;
             padding: 5px;
@@ -156,7 +157,7 @@ img.logo{
             padding: 10px 30px;
             cursor: pointer;
             display: block;
-            margin-top:40px;
+            margin-top:20px;
             margin-left: 25px;
             background: linear-gradient(to bottom right, #EF4765 , #971426 );
             border: none;
@@ -275,8 +276,22 @@ img.logo{
   border: 2px solid  rgba(48, 45, 45, 0.6);
 }
 
+.forgot{
+    margin-top: 15px;
+    text-decoration: none;
+    color: #971426;
+    font-weight: bolder;
+    margin-bottom: 10px;
+   }
 
+   .forgot:hover{
+    text-decoration: underline;
+   }
    
+#route{
+    cursor:pointer;
+}
+
 
    
 
@@ -285,7 +300,7 @@ img.logo{
 <body>
     <main>
     <div  class="left">
-        <a href='../../home.php'> <img class="logo"  src="../../../../images/background/kjsieit-logo.svg"> </a>
+        <p id="route"> <img class="logo"  src="../../../images/background/kjsieit-logo.svg"> </p>
    <div class="container">
     <span class="text1">Welcome To..</span>
     <span class="text2">DLCOA</span>
@@ -308,8 +323,10 @@ img.logo{
                 <input type="email" id="mail" name="email" placeholder="Enter your Email" required>
                 <input type='text' id='who' name='who' value='student' readonly style='display:none'>
                 <span id="password-match-error" class="error-message">
-                        <?php if (isset($_GET['error1'])){ echo $_GET['error1']; }?> </span>
+                        <?php if (isset($_GET['error'])){ echo $_GET['error']; }?> </span>
                 <button type="submit" name="submit">Change Password</button>
+            <p class = 'forgot'><a href='../../home.php' class='forgot'>Remembered Password?</a></p>
+
             </form>
 
         </div>
@@ -321,11 +338,12 @@ img.logo{
             var ad = document.getElementById('admin');
             var form = document.getElementById('changePasswordForm');
             var who =document.querySelector('#who');
+            var home =document.getElementById('route');
 
             function student(){
                 stud.className = 'button-16';
                 ad.className = 'button-17';
-                who.setAttribute('value','admin');
+                who.setAttribute('value','student');
                 window.alert('Redirecting to student page');
             }
 
@@ -334,19 +352,28 @@ img.logo{
                 stud.className = 'button-17';
                 who.setAttribute('value','admin');
                 window.alert('Redirecting to admin page');
-
             }
 
-            student();
+            home.addEventListener('click', ()=>{
+                let text="Are you sure about returning to home page?";
+
+                if(confirm(text)){
+                    location.href = '../../home.php';
+                }
+            });
 
             <?php
-                if(isset($_GET['who'])){
-                    if($_GET['who']=='admin'){
+                if(isset($_GET['type'])){
+                    if($_GET['type']=='admin'){
                         echo "admin();";
                     }
                     else{
                         echo "student();";
                     }
+                }
+
+                else{
+                    echo "student();";
                 }
             ?>
 
