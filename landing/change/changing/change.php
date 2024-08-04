@@ -259,8 +259,8 @@ img.logo{
         <h2>Change Password</h2>
         <form id="changePasswordForm" action="pass_change.php" method="post" onsubmit="return checkValue();">
             <input type="number" id="otp" name="otp"  minlength="6" maxlength="6" placeholder="Enter OTP" required>
-            <input type="password" id="newPassword" name="newPassword" placeholder="Enter New Password" autocomplete="new-password" minlength="8" maxlength="20" required>
-            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm New Password" autocomplete="current-password" minlength="8" maxlength="20" required>
+            <input type="text" id="newPassword" name="newPassword" placeholder="Enter New Password" autocomplete="new-password" minlength="8" maxlength="20" required>
+            <input type="text" id="confirmPassword" name="confirmPassword" placeholder="Confirm New Password" autocomplete="current-password" minlength="8" maxlength="20" required>
             <input type='text' id='who' name='who' value=<?php echo $_GET['type']?> readonly style='display:none'>
             <span id="password-match-error" class="error-message"> <?php if (isset($_GET['error'])){ echo $_GET['error']; }?> </span>
             <button type="submit" name="submit">Change Password</button>

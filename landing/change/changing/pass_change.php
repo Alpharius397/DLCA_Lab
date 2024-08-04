@@ -13,7 +13,7 @@
         return $path;
     }
 
-    $level = 2;
+    $level = 3;
     $path = reroading($level);
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -60,7 +60,7 @@
                 }
 
                 $conn->commit();
-                header("Location: ../../../home.php?error1=Password Successfully Changed!&where=log&type=$who");
+                header("Location: ../../home.php?error1=Password Successfully Changed!&where=log&type=$who");
                 exit();
             } 
             catch (mysqli_sql_exception $e) {
