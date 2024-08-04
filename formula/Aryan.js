@@ -1296,11 +1296,11 @@ function app_admin(index,user,exp,rate,feed,one){
                     <th id=feed${index}>${checkEmpty(feed)}</th>
                     <th>
                     <div class='actions'>
-                    <button data-user=${user} data-exp=${exp} data-index=${index} class="edit">Edit</button>
+                    <button data-user='${user}' data-exp='${exp}' data-index='${index} class="edit">Edit</button>
                     <form action='../../del/del_row.php' method='post' onsubmit='return deleteAlert();'>
                     <input type='text' name='path' id='path' value='review' readonly style='display:none;' readonly>
                     <input type="text" name="user" id="user${index}" value = "${user}" style='display:none;' readonly>
-                    <input type="text" name="exp" id="exp${index}" value = ${exp} style='display:none;' readonly>
+                    <input type="text" name="exp" id="exp${index}" value = '${exp}' style='display:none;' readonly>
                     <input type="submit" name="submit" value="Delete">
                     </form>
                     </div>
@@ -1394,10 +1394,10 @@ function app_logic(sr,index,ques,option,answer,one){
                     <th id=ans${index}>${answer}</th>
                     <th>
                     <div class='actions'>
-                    <button data-index=${index} class="edit">Edit</button>
+                    <button data-index='${index}' class="edit">Edit</button>
                     <form action='../../del/del_row.php' method='post' onsubmit='return deleteAlert();'>
                     <input type='text' name='path' id='path' value='logicq' readonly style='display:none;' readonly>
-                    <input type="text" name="index" value = ${index} style='display:none;' readonly>
+                    <input type="text" name="index" value = '${index}' style='display:none;' readonly>
                     <input type="submit" name="submit" value="Delete">
                     </form>
                     </div>
