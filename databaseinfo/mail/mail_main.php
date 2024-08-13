@@ -18,10 +18,37 @@
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
 
+    // using mail()
     function writeMail($to,$msg,$sub){
 
         $success = mail($to,$sub,$msg);
         return $success;
     }
 
+
+/*    
+    //using php mailer
+
+    function writeMail($to,$msg,$sub){
+
+        $mail = new PHPMailer(true);
+        $mail->isSMTP();                                           
+        $mail->Host       = 'smtp.gmail.com';                    
+        $mail->SMTPAuth   = true;                                   
+        $mail->Username   = 'YOUR-EMAIL-ADDRESS';                    
+        $mail->Password   = 'YOUR-SMTP-KEY';                              
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;           
+        $mail->Port       = 465;                                  
+
+        $mail->setFrom('YOUR-EMAIL-ADDRESS');
+        $mail->addAddress($to);     
+
+        $mail->isHTML(true);                                
+        $mail->Subject = $sub;
+        $mail->Body    = $msg;
+
+        $mail->send();
+
+    }
+*/
 ?>

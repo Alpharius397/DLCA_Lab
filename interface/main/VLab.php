@@ -1441,8 +1441,8 @@
  <div class="style-82">
  <div class="style-83">
  <div class="style-84">
- <h5 data-target="4" class="style-85">5</h5>
- <div class="style-86">5</div>
+ <h5 data-target="4" class="style-85">6</h5>
+ <div class="style-86">6</div>
  </div>
  <p class="style-87">Experiments</p>
  </div>
@@ -1450,7 +1450,7 @@
  <div class="style-88">
  <div class="style-89">
  <div class="style-90">
- <h5 data-target="120%" class="style-91"><?php if(isset($_SESSION['sum'])){ echo $_SESSION['sum']; } ?></h5>
+ <h5 data-target="120%" class="style-91"><?php if(isset($_SESSION['sum'])){ echo $_SESSION['sum']; } ?>/15</h5>
  <div class="style-92">120%</div>
  </div>
  <p class="style-93">Total Rating<br class="" /></p>
