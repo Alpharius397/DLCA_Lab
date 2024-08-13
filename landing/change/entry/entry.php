@@ -292,6 +292,32 @@ img.logo{
     cursor:pointer;
 }
 
+@media  only screen and (max-width: 1104px) {
+        footer{
+            display: none;
+        }
+
+        .left{
+            display: none;
+        }
+
+        .mid{
+            display: none;
+        }
+
+        .right{
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .button-16{
+            width: 140px;
+        }
+
+        .button-17{
+            width: 140px;
+        }
+    }
 
    
 

@@ -1,4 +1,6 @@
-/** Returns 2^n. c ->integer*/
+/** @param {int} n Returns 2^n. c ->integer
+*   @returns int
+*/
 function po(n){
     return Math.pow(2,n);
 }
