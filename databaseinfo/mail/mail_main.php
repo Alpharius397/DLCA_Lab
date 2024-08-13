@@ -35,12 +35,12 @@
         $mail->isSMTP();                                           
         $mail->Host       = 'smtp.gmail.com';                    
         $mail->SMTPAuth   = true;                                   
-        $mail->Username   = 'YOUR-EMAIL-ADDRESS';                    
-        $mail->Password   = 'YOUR-SMTP-KEY';                              
+        $mail->Username   = 'rajjm397@gmail.com';                    
+        $mail->Password   = 'pqpdhxnvautwxvoh';                              
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;           
         $mail->Port       = 465;                                  
 
-        $mail->setFrom('YOUR-EMAIL-ADDRESS');
+        $mail->setFrom('rajjm397@gmail.com');
         $mail->addAddress($to);     
 
         $mail->isHTML(true);                                
