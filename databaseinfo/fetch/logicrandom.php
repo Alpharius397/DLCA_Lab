@@ -21,7 +21,7 @@
         }
     } 
 
-    if(count($pool)<31){
+    if(count($pool)<5){
         header('Location: LogicTheo.php?error=No questions found! Please ask admin to add questions.');
     }
 
