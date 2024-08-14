@@ -965,9 +965,11 @@ function createOption(result,option,ansSet,type){
     var answer = value(ansSet,option);
     var ans = new Set();
 
+    //var retreat = ['BoothTheo','RestTheo','NonRestoTheo'];
     if(q.length<=3){
         console.log(' Insufficient Data (breaking) ');
         location.reload();
+        //location.href=`${retreat[type]}.php?error=No questions found! Please ask admin to add questions.`;
     }
 
     while (ans.size<3){

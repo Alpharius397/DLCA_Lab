@@ -251,6 +251,7 @@
             randomGate(c);
         });
 
+        <?php if(isset($_GET['error'])){$note = $_GET['error'];echo "alert('$note');";}?>
     </script>
 </div>
     </main>

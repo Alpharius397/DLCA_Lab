@@ -20,8 +20,8 @@
 
     // using mail()
     function writeMail($to,$msg,$sub){
-
-        $success = mail($to,$sub,$msg);
+        $headers['Content-type'] = 'text/html; charset=iso-8859-1';
+        $success = mail($to,$sub,$msg,$headers);
         return $success;
     }
 

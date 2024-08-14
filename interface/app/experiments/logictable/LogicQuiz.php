@@ -1,21 +1,21 @@
 <?php 
-   session_start();
-   
-   function reroading($level){
-      $path = '';
+    session_start();
 
-      for($i=0;$i<$level;$i++){
-          $path .= '../';
+    function reroading($level){
+        $path = '';
 
-      }
+        for($i=0;$i<$level;$i++){
+            $path .= '../';
 
-      return $path;
-   }
+        }
 
-   $level = 4;
-   $path = reroading($level);
+        return $path;
+    }
 
-   include($path."databaseinfo/security/secure.php");
+    $level = 4;
+    $path = reroading($level);
+
+    include($path."databaseinfo/security/secure.php");
     include($path.'databaseinfo/main/database.php');
     include($path.'databaseinfo/fetch/logicrandom.php');
     include($path.'databaseinfo/helper/help.php');
@@ -220,7 +220,7 @@
     <script src='../../../../formula/Aryan.js'></script>
     <script>
         var answers = questionConstruct(<?php arrayLogic($_SESSION['data']);?>);
-
+        console.log(answers);
         function submitQuiz1() {
             if (answers!=[]){
             ques = ['q1',"q2","q3","q4","q5"];

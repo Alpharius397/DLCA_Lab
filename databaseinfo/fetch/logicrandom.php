@@ -21,6 +21,10 @@
         }
     } 
 
+    if(count($pool)<31){
+        header('Location: LogicTheo.php?error=No questions found! Please ask admin to add questions.');
+    }
+
     $limit = count($pool)-1;
     while(count($main) < 5){
         $rand = rand(0,$limit);
