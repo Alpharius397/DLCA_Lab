@@ -200,32 +200,32 @@ header h3{
                     <img src="../../../images/contri/raj.jpg" alt="Raj More">
                     <div class="name">Raj More</div>
                     <div class="links">
-                        <a href="mailto:rajmore@example.com"><i class="bi bi-envelope"></i></a>
-                        <a href="https://instagram.com/rajmore"><i class="bi bi-instagram"></i></a>
+                        <a href="mailto:raj.more@somaiya.edu"><i class="bi bi-envelope"></i></a>
+                        <a href=""><i class="bi bi-instagram"></i></a>
                     </div>
                 </div>
                 <div class="person">
                     <img src="../../../images/contri/aryan.jpg" alt="Aryan Mandke">
                     <div class="name">Aryan Mandke</div>
                     <div class="links">
-                        <a href="mailto:aryanmandke@example.com"><i class="bi bi-envelope"></i></a>
-                        <a href="https://instagram.com/aryanmandke"><i class="bi bi-instagram"></i></a>
+                        <a href="mailto:aryan.mandke@somaiya.edu"><i class="bi bi-envelope"></i></a>
+                        <a href=""><i class="bi bi-instagram"></i></a>
                     </div>
                 </div>
                 <div class="person">
                     <img src="../../../images/contri/pranav.jpg" alt="Pranav Lohar">
                     <div class="name">Pranav Lohar</div>
                     <div class="links">
-                        <a href="mailto:pranavlohar@example.com"><i class="bi bi-envelope"></i></a>
-                        <a href="https://instagram.com/pranavlohar"><i class="bi bi-instagram"></i></a>
+                        <a href="mailto:pranav.lohar@somaiya.edu"><i class="bi bi-envelope"></i></a>
+                        <a href=""><i class="bi bi-instagram"></i></a>
                     </div>
                 </div>
                 <div class="person">
                     <img src="../../../images/contri/dhruv.jpg" alt="Dhruv Mavani">
                     <div class="name">Dhruv Mavani</div>
                     <div class="links">
-                        <a href="mailto:dhruvmavani@example.com"><i class="bi bi-envelope"></i></a>
-                        <a href="https://instagram.com/dhruvmavani"><i class="bi bi-instagram"></i></a>
+                        <a href="mailto:dhruv.mavani@somaiya.edu"><i class="bi bi-envelope"></i></a>
+                        <a href=""><i class="bi bi-instagram"></i></a>
                     </div>
                 </div>
             </div>
@@ -235,11 +235,11 @@ header h3{
             <h3>Project Guide</h3>
             <div class="guide">
                 <div class="person">
-                    <img src="placeholder.jpg" alt="Prof. Priyanka Deshmukh">
+                    <img src="../../../images/contri/priyanka_maam.jpg" alt="Prof. Priyanka Deshmukh">
                     <div class="name">Prof. Priyanka Deshmukh</div>
                     <div class="links">
-                        <a href="mailto:priyankadeshmukh@example.com"><i class="bi bi-envelope"></i></a>
-                        <a href="https://linkedin.com/priyankadeshmukh"><i class="bi bi-linkedin"></i></a>
+                        <a href="mailto:p.deshmukh@somaiya.edu"><i class="bi bi-envelope"></i></a>
+                        <a href=""><i class="bi bi-linkedin"></i></a>
                     </div>
                 </div>
             </div>
