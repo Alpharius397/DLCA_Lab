@@ -196,7 +196,7 @@ img.logo{
       }
       
 
-      .button-17 {
+      .button-16 {
   align-items: center;
   appearance: none;
   background-color: #fff;
@@ -205,7 +205,7 @@ img.logo{
   box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
   box-sizing: border-box;
   color: #3c4043;
-  cursor: pointer;
+  cursor: default;
   display: inline-flex;
   fill: currentcolor;
   font-family: "Google Sans",Roboto,Arial,sans-serif;
@@ -232,7 +232,7 @@ img.logo{
   margin:10px;
 }
 
-.button-16{
+.button-17{
     align-items: center;
   appearance: none;
   background: #97142697;
@@ -265,7 +265,6 @@ img.logo{
   will-change: transform,opacity;
   z-index: 0;
   margin: 0 20px;
-  cursor: default;
   margin:10px;
 }
 
@@ -370,14 +369,12 @@ img.logo{
                 stud.className = 'button-16';
                 ad.className = 'button-17';
                 who.setAttribute('value','student');
-                window.alert('Redirecting to student page');
             }
 
             function admin(){
                 ad.className = 'button-16';
                 stud.className = 'button-17';
                 who.setAttribute('value','admin');
-                window.alert('Redirecting to admin page');
             }
 
             home.addEventListener('click', ()=>{
