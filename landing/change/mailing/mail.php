@@ -33,7 +33,7 @@
             $table = 'admin';
         }
         else{
-            //header("Location: ../entry/entry.php?error=Some error occured! Please try again");
+            header("Location: ../entry/entry.php?error=Some error occured! Please try again");
         }
 
         $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_SPECIAL_CHARS); 
@@ -46,7 +46,7 @@
 
         }
         catch (Exception $e) {
-            //header("Location: ../entry/entry.php?error=Some error occured! Please try again.&type=$who");
+            header("Location: ../entry/entry.php?error=Some error occured! Please try again.&type=$who");
             exit();
         }
 
@@ -68,14 +68,14 @@
             } 
                 
             catch (Exception $e) {
-                //header("Location: ../entry/entry.php? error= Some error occured! Please try again.&type=$who");
+                header("Location: ../entry/entry.php? error= Some error occured! Please try again.&type=$who");
                 exit();
             }
         
         }
 
         else {
-            //header("Location: ../entry/entry.php? error= Email ID is not registered!&type=$who");
+            header("Location: ../entry/entry.php? error= Email ID is not registered!&type=$who");
             exit();
         }
 
